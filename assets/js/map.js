@@ -1,6 +1,7 @@
 let map;
-const mapScript = $("#map-script");
-mapScript.attr("src", `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap&v=weekly`);
+let script = document.createElement('script');
+script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
+script.async = true;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
@@ -10,3 +11,5 @@ function initMap() {
 }
 
 window.initMap = initMap;
+
+document.head.appendChild(script);

@@ -35,13 +35,10 @@
                 <button id='submit-btn' class='view-button'>Submit</button>
             </article>
 
-            <article class='filter'>
-                <img src='assets/images/map-of-canada.png'/>
-                <span class='title'>Map Of Canada</span>
-                <button class='view-button'>View</button>
+            <article class='filter' id="map">
+
             </article>
         </section>
-
         <!--creates section that contains the users saved sites-->
         <section class='selected-sites'>
             <div class='site'>
@@ -66,11 +63,15 @@
             </div>
         </section>
     </main>
-    
+
     <!--this creates the footer of the webpage-->
     <footer>
         <h2>@2022 Camp JRNL</h2>
     </footer>
-    <script src='./assets/js/main.js'></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script id="maps-api" src=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="./assets/js/notApiKey.js"></script>
+    <script type="module" src='./assets/js/main.js'></script>
 </body>
 </html>

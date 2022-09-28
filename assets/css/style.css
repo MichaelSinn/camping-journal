@@ -1,0 +1,189 @@
+/*----------------------------global selectors----------------------*/
+html {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  /*gives the code/content within the body the below background color*/
+  body {
+    background:#9dd1ff;
+  }
+  
+  /*formats all code within <main></main>*/
+  main {
+    background: rgba(255, 255, 255, 0.5);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 30px 50px;
+  }
+
+  /*formats the letters inside the <span></span> that are nested inside the h1*/
+  h1 span {
+    color: white;
+  }
+
+  img {
+    height: 60%;
+    width: 60%;
+  }
+  /*aligns the text within the footer to the center>*/
+  footer {
+    font-size: 18px;
+    text-align:center;
+    margin: 20px;
+  }
+  
+  /*allows for the content within this class to be resposive due to the implementation of flexbox*/
+  .panel {
+    margin-top: 100px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px 25px;
+    max-width: 960px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 40px 40px 200px;
+
+  }
+  
+  .filter {
+    border-bottom: 1px solid #e1f1ff;
+    justify-content: space-evenly;
+  }
+  
+  .title {
+    color: #016ff9; 
+    display: block;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  
+  /*formats the buttons in the webpage*/
+  .view-button {
+    background-color: white;
+    border: 1px solid #9dd1ff;
+    border-radius: 10px;
+    color: #348efe;
+    display: inline-block;
+    padding: 15px 35px;
+    text-decoration: none;
+    margin: 25px 0;
+    transition: background-color 200ms ease-in-out;
+  }
+  
+  /*changes background color of buttons when hovering over them*/
+  .view-button:hover, .view-button:focus {
+    background-color: #e1f1ff;
+    cursor: pointer;
+  }
+  
+  /*creates interaction with the user*/
+  /*when hovering over each  section, the section will gain a border outline*/
+  .filter:hover {
+    border:3px solid #9dd1ff;
+    box-shadow: 5 5em 5em -0.4 #48aaff;
+    transform: translateY(-0.25em);
+  }
+
+  .selected-sites {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 73%;
+  }
+
+  .site {
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    height: 150px;
+    width: 150px;
+    background-color: white;
+  }
+
+  .site:hover{
+    border:3px solid #9dd1ff;
+    box-shadow: 5 5em 5em -0.4 #48aaff;
+    transform: scale(1.1,1.1)
+  }
+
+
+  .navbar ul{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:space-evenly;
+    align-items: center;
+    list-style: none;
+    margin-top: 50px;
+    color: white;
+    font-weight: bolder;
+  }
+
+  .header {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 300px;
+  }
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(131, 122, 122);
+    height: 100vh;
+  }
+  
+  .main-content h1 {
+    font-size: 40px;
+    font-weight: bolder;
+  }
+
+  .main-content::before {
+    content: '';
+    position:absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.3;
+    background-image: url('https://p4.wallpaperbetter.com/wallpaper/193/487/615/tent-camping-milky-way-reflection-wallpaper-preview.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+  }
+
+
+  /*--------------------media query-------------------*/
+  /*Once the users screen is 900px or greater, this code will run*/
+  /*Changes the flex-direction of the panel class to rows from columns*/
+  /*adjusts the margins to format cleaner for larger screen dimensions*/
+  @media (min-width: 900px){
+    .panel {
+      flex-direction: row;
+    }
+    .filter {
+      border-bottom: none;
+      border: 1px solid #e1f1ff;
+      padding: 25px 50px;
+      text-align: center;
+    }
+    main {
+      flex-direction: column;
+    } 
+    .selected-sites {
+        flex-direction: row;
+    }
+
+}

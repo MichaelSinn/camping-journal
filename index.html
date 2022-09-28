@@ -1,17 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./assets/css/reset.css">
-        <link rel="stylesheet" href="./assets/css/style.css">
-        <title>Document</title>
-    </head>
-    <body>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
-        <script src="./assets/js/notApiKey.js"></script>
-        <script id="maps-api" src="" defer></script>
-        <script type="module" src="./assets/js/main.js"></script>
-    </body>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet'>
+    <link rel='stylesheet' href='./assets/css/reset.css'>
+    <link rel='stylesheet' href='./assets/css/style.css'>
+    <title>Camp JRNL</title>
+</head>
+
+<body>
+    <!--creates the header of the page (navbar, bg image)-->
+    <header class='main-content'>
+        <nav class='navbar'>
+            <ul>
+                <li><a href='#container'>Search Campsites</a></li>
+                <li><a href='#container'>View Saved Sites</a></li>
+                <li><a href='#container'>Give Your Review</a></li>
+            </ul>
+        </nav>
+        <section class='header'>
+            <h1>CAMP JRNL. <span>YOUR ONE STOP CAMPSITE FINDER</span></h1>
+        </section>
+    </header>
+
+    <!--main content-->
+    <main>
+        <!--The view map, and filter data areas are contained within individual sections-->
+        <section id='container' class='panel'>
+            <article class='filter'>
+                <input id='filter-weather' type='text' placeholder='Weather'/>
+                <input id='filter-location' type='text' placeholder='Distance'/>
+                <button id='submit-btn' class='view-button'>Submit</button>
+            </article>
+
+            <article class='filter'>
+                <img src='assets/images/map-of-canada.png'/>
+                <span class='title'>Map Of Canada</span>
+                <button class='view-button'>View</button>
+            </article>
+        </section>
+
+        <!--creates section that contains the users saved sites-->
+        <section class='selected-sites'>
+            <div class='site'>
+                <img src='assets/images/image-icon.png' alt='image-icon'/>
+                <span>Site</span>
+            </div>
+            <div class='site'>
+                <img src='assets/images/image-icon.png' alt='image-icon'/>
+                <span>Site</span>
+            </div>
+            <div class='site'>
+                <img src='assets/images/image-icon.png' alt='image-icon'/>
+                <span>Site</span>
+            </div>
+            <div class='site'>
+                <img src='assets/images/image-icon.png' alt='image-icon'/>
+                <span>Site</span>
+            </div>
+            <div class='site'>
+                <img src='assets/images/image-icon.png' alt='image-icon'/>
+                <span>Site</span>
+            </div>
+        </section>
+    </main>
+    
+    <!--this creates the footer of the webpage-->
+    <footer>
+        <h2>@2022 Camp JRNL</h2>
+    </footer>
+    <script src='./assets/js/main.js'></script>
+</body>
 </html>

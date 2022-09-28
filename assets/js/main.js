@@ -1,37 +1,73 @@
-const form = document.querySelector('#submit-btn');
-const weather = document.querySelector('#filter-weather');
-const locationEl = document.querySelector('#filter-location');
-const googleApiScript = $("#maps-api");
-let scriptSrc = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap&v=weekly`;
-googleApiScript.attr("src", scriptSrc);
-
-form.addEventListener('click', function(e) {
-    e.preventDefault();
-    const weatherData = weather.value;
-    const locationData = locationEl.value;
-    console.log(weatherData);
-    console.log(locationData);
-});
-
 let map;
 let script = document.createElement('script');
 script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
 script.async = true;
 
+let markers = JSON.parse(localStorage.getItem("markers"));
+if (!markers){
+    markers = [];
+    localStorage.setItem("markers", JSON.stringify(markers));
+}
+
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: 43.650, lng: -79.386 },
-        zoom: 8,
+        zoom: 8
+    });
+    markers.forEach(e =>{
+        const marker = new google.maps.Marker({
+            position: { lat: e.lat, lng: e.lng },
+            map: map
+        });
+    })
+}
+
+$(function(){
+    let dialog, form,
+        siteName = $( "#name" ),
+        latitude = $( "#lat" ),
+        longitude = $( "#lng" ),
+        allFields = $( [] ).add( siteName ).add( latitude ).add( longitude );
+
+    function addCampsite(){
+        let newMarker = {
+            name: siteName.val(),
+            lat: latitude.val() * 1,
+            lng: longitude.val() * 1
+        };
+        markers = JSON.parse(localStorage.getItem("markers"));
+        markers.push(newMarker);
+        localStorage.setItem("markers", JSON.stringify(markers));
+        dialog.dialog("close");
+        return true;
+    }
+
+    dialog = $( "#new-site-form" ).dialog({
+        autoOpen: false,
+        height: 400,
+        width: 350,
+        modal: true,
+        buttons: {
+            "Add Campsite": addCampsite,
+            Cancel: function() {
+                dialog.dialog( "close" );
+            }
+        },
+        close: function() {
+            form[ 0 ].reset();
+            allFields.removeClass( "ui-state-error" );
+        }
+    });
+    form = dialog.find( "form" ).on( "submit", function( event ) {
+        event.preventDefault();
+        addCampsite();
     });
 
-    const marker = new google.maps.Marker({
-        position: { lat: 43.650, lng: -79.386 },
-        map: map
+    $( "#add-site" ).button().on( "click", function() {
+        dialog.dialog( "open" );
     });
-}
+});
 
 window.initMap = initMap;
 
 document.head.appendChild(script);
-
-localStorage.getItem('selected-sites');

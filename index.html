@@ -6,7 +6,10 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet'>
     <link rel='stylesheet' href='./assets/css/reset.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
     <link rel='stylesheet' href='./assets/css/style.css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <title>Camp JRNL</title>
 </head>
 
@@ -24,7 +27,23 @@
             <h1>CAMP JRNL. <span>YOUR ONE STOP CAMPSITE FINDER</span></h1>
         </section>
     </header>
+    <div id="new-site-form" title="New campsite">
+        <p class="validateTips">All form fields are required.</p>
 
+        <form>
+            <fieldset>
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all">
+                <label for="lat">Latitude coordinate</label>
+                <input type="text" name="lat" id="lat" value="" class="text ui-widget-content ui-corner-all">
+                <label for="lng">Longitude coordinate</label>
+                <input type="text" name="lng" id="lng" value="" class="text ui-widget-content ui-corner-all">
+
+                <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+            </fieldset>
+        </form>
+    </div>
     <!--main content-->
     <main>
         <!--The view map, and filter data areas are contained within individual sections-->
@@ -61,6 +80,9 @@
                 <img src='assets/images/image-icon.png' alt='image-icon'/>
                 <span>Site</span>
             </div>
+            <div class="add-site" id="add-site">
+                +
+            </div>
         </section>
     </main>
 
@@ -68,10 +90,9 @@
     <footer>
         <h2>@2022 Camp JRNL</h2>
     </footer>
+
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script id="maps-api" src=""></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="./assets/js/notApiKey.js"></script>
-    <script type="module" src='./assets/js/main.js'></script>
+    <script src='./assets/js/main.js'></script>
 </body>
 </html>

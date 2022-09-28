@@ -20,8 +20,13 @@ script.async = true;
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: -34.397, lng: 150.644 },
+        center: { lat: 43.650, lng: -79.386 },
         zoom: 8,
+    });
+
+    const marker = new google.maps.Marker({
+        position: { lat: 43.650, lng: -79.386 },
+        map: map
     });
 }
 

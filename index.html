@@ -11,22 +11,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <title>Camp JRNL</title>
-    <!-- added the Bulma link, to add the Bulma libary -->
+    <!-- added the Bulma link, to add the Bulma library -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
 <body>
 <!--creates the header of the page (navbar, bg image)-->
 <!-- added style to the background of the to card -->
-<!-- but the links dont work now  -->
+<!-- but the links don't work now  -->
 <header class='main-content '>
     <div class="card nav-card">
         <nav class="card-footer message">
-            <a href="#container" style="text-decoration: none;" class="column" class="card-footer-item">Search
+            <a href="#container" style="text-decoration: none;" class="card-footer-item column">Search
                 Campsites</a>
-            <a href="#container" style="text-decoration: none;" class="column" class="card-footer-item">View Saved
+            <a href="#container" style="text-decoration: none;" class="card-footer-item column">View Saved
                 Sites</a>
-            <a href="#container" style="text-decoration: none;" class="column" class="card-footer-item">Give Your
+            <a href="#container" style="text-decoration: none;" class="card-footer-item column">Give Your
                 Review</a>
         </nav>
     </div>
@@ -71,7 +71,9 @@
     <!--The view map, and filter data areas are contained within individual sections-->
     <section id='container' class='panel'>
         <article class='filter'>
+            <label for="filter-weather">Weather</label>
             <input id='filter-weather' type='text' placeholder='Weather'/>
+            <label for="filter-location">Distance</label>
             <input id='filter-location' type='text' placeholder='Distance'/>
             <button id='submit-btn' class='view-button'>Submit</button>
         </article>

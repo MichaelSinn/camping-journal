@@ -116,9 +116,12 @@ html {
     box-shadow: 5 5em 5em -0.4 #48aaff;
     transform: scale(1.1,1.1)
   }
-
-
-  .navbar ul{
+.card{
+  opacity: 0.5;
+}
+/* blocked out this code for testing  */
+  /* .navbar ul{
+    background-color: rgb(87 83 78);
     display:flex;
     flex-wrap: wrap;
     justify-content:space-evenly;
@@ -127,9 +130,15 @@ html {
     margin-top: 50px;
     color: white;
     font-weight: bolder;
-  }
+  } */
 
+
+  /* added color to the text so it will show up */
+  .text-part-two{
+  color: rgb(102, 99, 99);
+}
   .header {
+    color: black;
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -147,6 +156,7 @@ html {
   .main-content h1 {
     font-size: 40px;
     font-weight: bolder;
+    
   }
 
   .main-content::before {
@@ -163,7 +173,7 @@ html {
     background-attachment: fixed;
     background-position: center;
   }
-
+ 
 
   /*--------------------media query-------------------*/
   /*Once the users screen is 900px or greater, this code will run*/

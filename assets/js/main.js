@@ -80,8 +80,7 @@ function initMap() {
         });
     });
 
-    map.addListener("dblclick", (e) => {
-        map.setZoom(0);
+    map.addListener("click", (e) => {
         console.log(e.latLng.lat(), e.latLng.lng());
         $("#lat").val(e.latLng.lat());
         $("#lng").val(e.latLng.lng());

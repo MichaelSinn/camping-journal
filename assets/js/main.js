@@ -3,10 +3,10 @@ let script = document.createElement('script');
 script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
 script.async = true;
 
-let markers = JSON.parse(localStorage.getItem("markers"));
-if (!markers) {
-    markers = [];
-    localStorage.setItem("markers", JSON.stringify(markers));
+let campsites = JSON.parse(localStorage.getItem("campsites"));
+if (!campsites) {
+    campsites = [];
+    localStorage.setItem("campsites", JSON.stringify(campsites));
 }
 
 function initMap() {
@@ -14,7 +14,7 @@ function initMap() {
         center: {lat: 43.650, lng: -79.386},
         zoom: 8
     });
-    markers.forEach(e => {
+    campsites.forEach(e => {
         const marker = new google.maps.Marker({
             position: {lat: e.lat, lng: e.lng},
             map: map
@@ -31,14 +31,19 @@ $(function () {
         allFields = $([]).add(siteName).add(latitude).add(longitude);
 
     function addCampsite() {
-        let newMarker = {
+        let newSite = {
             name: siteName.val(),
             lat: latitude.val() * 1,
             lng: longitude.val() * 1
         };
-        markers = JSON.parse(localStorage.getItem("markers"));
-        markers.push(newMarker);
-        localStorage.setItem("markers", JSON.stringify(markers));
+        campsites = JSON.parse(localStorage.getItem("campsites"));
+        campsites.push(newSite);
+        const marker = new google.maps.Marker({
+            position: {lat: newSite.lat, lng: newSite.lng},
+            map: map
+        });
+        marker.setMap(map);
+        localStorage.setItem("campsites", JSON.stringify(campsites));
         dialog.dialog("close");
         return true;
     }
@@ -69,8 +74,8 @@ $(function () {
     });
 });
 
-function getWeather(lat, lon) {
-    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=4525e4c4d6900be2e3932d311208c64e`;
+function getWeather(lat, lng) {
+    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=4525e4c4d6900be2e3932d311208c64e&units=metric`;
     fetch(apiUrl).then(function (response) {
         return response.json();
     }).then(function (data) {

@@ -112,38 +112,39 @@ footer {
     background-color: white;
 }
 
-  .site:hover{
-    border:3px solid #9dd1ff;
+.site:hover {
+    border: 3px solid #9dd1ff;
     box-shadow: 5 5em 5em -0.4 #48aaff;
-    transform: scale(1.1,1.1)
-  }
-  
-  /* added opacity to the card */
-.card{
-
-  opacity: 0.5;
+    transform: scale(1.1, 1.1)
 }
+
+/* added opacity to the card */
+.card {
+    opacity: 0.5;
+}
+
 /* blocked out this code for testing  */
-  /* .navbar ul{
-    background-color: rgb(87 83 78);
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    list-style: none;
-    margin-top: 50px;
-    color: white;
-    font-weight: bolder;
-  } */
+/* .navbar ul{
+  background-color: rgb(87 83 78);
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  margin-top: 50px;
+  color: white;
+  font-weight: bolder;
+} */
 
 
-  /* added color to the text so it will show up */
-  .text-part-two{
-  color: rgb(102, 99, 99);
+/* added color to the text so it will show up */
+.text-part-two {
+    color: rgb(102, 99, 99);
 }
-  .header {
+
+.header {
     color: black;
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -160,7 +161,7 @@ footer {
 .main-content h1 {
     font-size: 40px;
     font-weight: bolder;
-  }
+}
 
 .main-content::before {
     content: '';
@@ -177,7 +178,7 @@ footer {
     background-position: center;
 }
 
-.add-site{
+.add-site {
     display: flex;
     background-color: #2c962c;
     width: 100px;
@@ -187,7 +188,7 @@ footer {
     justify-content: center;
 }
 
-.add-site:hover{
+.add-site:hover {
     background-color: #36b036;
 }
 
@@ -195,32 +196,37 @@ footer {
     height: 500px;
     width: 500px;
 }
+
 /* added border so it will look nice */
-#new-site-form{
-  outline: solid 1px rgba(150, 155, 150, 0.452);
-  border-radius: 10px 10px 10px 10px; 
+#new-site-form {
+    outline: solid 1px rgba(150, 155, 150, 0.452);
+    border-radius: 10px 10px 10px 10px;
 }
+
 /* added margin so it will fit properly  */
-.validateTips{
-  margin-bottom: 20px;
-  margin-top: 10px;
- 
+.validateTips {
+    margin-bottom: 20px;
+    margin-top: 10px;
+
 }
+
 /* made the content fit properly in the middle */
-fieldset{
-  display: flex; 
-  flex-wrap: wrap;
-  justify-content: space-around;
-  outline: solid 1px rgba(11, 59, 11, 0.452);
-  border-radius: 10px 10px 10px 10px;   
+fieldset {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    outline: solid 1px rgba(11, 59, 11, 0.452);
+    border-radius: 10px 10px 10px 10px;
 }
+
 /* added space between the top and bottom so it will look nicer  */
-#name, #lat, #lng { 
-  margin-bottom: 10px;
-  margin-top: 10px;
-  width: calc(75%/1);
-  outline: solid 1px rgba(11, 59, 11, 0.452);
+#name, #lat, #lng {
+    margin-bottom: 10px;
+    margin-top: 10px;
+    width: calc(75% / 1);
+    outline: solid 1px rgba(11, 59, 11, 0.452);
 }
+
 /*--------------------media query-------------------*/
 /*Once the users screen is 900px or greater, this code will run*/
 /*Changes the flex-direction of the panel class to rows from columns*/

@@ -42,6 +42,7 @@ $(function () {
             lat: latitude.val() * 1,
             lng: longitude.val() * 1
         };
+        // Check if site name is unique
         campsites = JSON.parse(localStorage.getItem("campsites"));
         campsites.push(newSite);
         const marker = new google.maps.Marker({

@@ -1,67 +1,41 @@
-# <Your-Project-Title>
+# CAMP JRNL
 
-## Description
+## Overview
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
-
-## Table of Contents (Optional)
-
-If your README is long, add a table of contents to make it easy for users to find what they need.
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [License](#license)
-
-## Installation
-
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
-
-## Usage
-
-Provide instructions and examples for use. Include screenshots as needed.
-
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
-
-## Credits
-
-List your collaborators, if any, with links to their GitHub profiles.
-
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
-
-## License
-
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
-
----
-
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-
-## Badges
-
-![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
-
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
+As technology continues to advance, travelers of all kinds have become increasingly more dependent on travel related websites to gain valuable information regarding their desired destination. Campers in specific rely on this data to evaluate which campsite is most suitable for themselves and those they are camping with. Camp JRNL gives prospective campers the capability to retrieve this crucial information, allowing them to make informed decisions. Furthermore, Camp JRNL allows users to submit information on campsites they have reviewed, to ultimately provide more data to new users planning their next trip! Camp JRNL serves as a reference for current and prospective campers.
 
 ## Features
 
-If your project has a lot of features, list them here.
+- Clicking any of the options in the navigation bar will direct the user to the corresponding section of the application
+- Users can filter campsites by desired weather forecast
+- Users can filter campsites by desired location
+- Users have the ability to select and save campsites for their convenience, the saved sites will display on a refresh/reopen
+- Uses flexbox elements to obtain a fully responsive webpage, compatible with a large range of screen dimensions
+- Contains "alt" phrases with descriptive titles of each image displayed, for screen readers
 
-## How to Contribute
+Link to [Live Website](https://michaelsinn.github.io/camping-journal/)
 
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
+## WireFrame & WorkFlow Chart
 
-## Tests
+### WireFrame
 
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+![wireframe](assets/images/home-page.png))
+
+### WorkFlow Chart
+
+![workflow-chart](assets/images/campjrnl-workflow-chart.png)
+
+## Credit
+
+Michael Sinn
+Link to Michael's [Github Profile](https://github.com/MichaelSinn)
+
+Trishane Wijeyawickrema
+Link to Trishane's [Github Profile](https://github.com/Trishaneww)
+
+Imanuel Meshikhi
+Link to Imanuel's [Github Profile](https://github.com/Imanuel3)
+
+## Liscence
+
+N/A

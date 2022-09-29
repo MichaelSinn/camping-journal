@@ -6,61 +6,48 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet'>
     <link rel='stylesheet' href='./assets/css/reset.css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css'>
     <link rel='stylesheet' href='./assets/css/style.css'>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js'></script>
     <title>Camp JRNL</title>
     <!-- added the Bulma link, to add the Bulma libary -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css'>
 </head>
 
 <body>
     <!--creates the header of the page (navbar, bg image)-->
-    <!-- added style to the background of the to card -->
-    <!-- but the links dont work now  -->
+    <!-- added style to the background of the to card --> 
 <header class='main-content '>
-    <div class="card nav-card">
-        <nav class="card-footer message">
-                <a href="#container" style="text-decoration: none;" class="column" class="card-footer-item" >Search Campsites</a>
-                <a href="#container" style="text-decoration: none;" class="column" class="card-footer-item">View Saved Sites</a> 
-                <a href="#container" style="text-decoration: none;"  class="column" class="card-footer-item">Give Your Review</a>
+    <div class='card nav-card'>
+        <nav class='card-footer message'>
+                <a href='#map' style='text-decoration: none;'  class='card-footer-item' >Search Campsites</a>
+                <a href='#selected-sites' style='text-decoration: none;'  class='card-footer-item'>View Saved Sites</a> 
+                <a href='#container' style='text-decoration: none;'   class='card-footer-item'>Give Your Review</a>
         </nav>
-    </div> 
+    </div>
 
-    <!-- blocked ut this code for testing  -->
-        <!-- <nav class='navbar'>
-            <ul>
-                <li><a href='#container'>Search Campsites</a></li>
-                <li><a href='#container'>View Saved Sites</a></li>
-                <li><a href='#container'>Give Your Review</a></li>
-                <li class="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
-            </ul>
-        </nav> -->
-        
-    
-    
-    <!-- added style to the background of the "header" class -->
-        <section class='header message'>
+    <!-- added style to the background of the 'header' class -->
+        <section class='header'>
              <!-- added a new class so I can edit the text -->
-            <h1>CAMP JRNL. <span class="text-part-two">YOUR ONE STOP CAMPSITE FINDER</span></h1>
+            <h1>CAMP JRNL. <span class='text-part-two'>YOUR ONE STOP CAMPSITE FINDER</span></h1>
         </section>
     </header>
-    <div id="new-site-form" title="New campsite">
-        <p class="validateTips">All form fields are required.</p>
+    <div id='new-site-form' title='New campsite'>
+        <p class='validateTips'>All form fields are required.</p>
 
         <form>
             <fieldset>
                 <!-- added pleas to the name class so the input can fit properly  -->
-                <label for="name">Name please </label>
-                <input type="text" name="name" id="name" value="" class="text ui-widget-content ui-corner-all">
-                <label for="lat">Latitude coordinate</label>
-                <input type="text" name="lat" id="lat" value="" class="text ui-widget-content ui-corner-all">
-                <label for="lng">Longitude coordinate</label>
-                <input type="text" name="lng" id="lng" value="" class="text ui-widget-content ui-corner-all">
+                <label for='name'>Name please </label>
+                <input type='text' name='name' id='name' value='' class='text ui-widget-content ui-corner-all'>
+                <label for='lat'>Latitude coordinate</label>
+                <input type='text' name='lat' id='lat' value='' class='text ui-widget-content ui-corner-all'>
+                <label for='lng'>Longitude coordinate</label>
+                <input type='text' name='lng' id='lng' value='' class='text ui-widget-content ui-corner-all'>
 
                 <!-- Allow form submission with keyboard without duplicating the dialog button -->
-                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+                <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
             </fieldset>
         </form>
     </div>
@@ -74,34 +61,34 @@
                 <button id='submit-btn' class='view-button'>Submit</button>
             </article>
 
-            <article class='filter' id="map">
+            <article class='filter' id='map'>
 
             </article>
         </section>
         <!--creates section that contains the users saved sites-->
-        <section class='selected-sites'>
+        <section id='selected-sites' class='saved-sites'>
             <div class='site'>
-                <img src='assets/images/image-icon.png' alt='image-icon'/>
+                <img src='assets/images/camping.png' alt='image-icon'/>
                 <span>Site</span>
             </div>
             <div class='site'>
-                <img src='assets/images/image-icon.png' alt='image-icon'/>
+                <img src='assets/images/camping.png' alt='image-icon'/>
                 <span>Site</span>
             </div>
             <div class='site'>
-                <img src='assets/images/image-icon.png' alt='image-icon'/>
+                <img src='assets/images/camping.png' alt='image-icon'/>
                 <span>Site</span>
             </div>
             <div class='site'>
-                <img src='assets/images/image-icon.png' alt='image-icon'/>
+                <img src='assets/images/camping.png' alt='image-icon'/>
                 <span>Site</span>
             </div>
             <div class='site'>
-                <img src='assets/images/image-icon.png' alt='image-icon'/>
+                <img src='assets/images/camping.png' alt='image-icon'/>
                 <span>Site</span>
             </div>
-            <div class="add-site" id="add-site">
-                +
+            <div class='add-site' id='add-site'>
+                <img src='assets/images/plus-icon.png' alt='plus-icon'>
             </div>
         </section>
     </main>
@@ -111,8 +98,8 @@
         <h2>@2022 Camp JRNL</h2>
     </footer>
 
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="./assets/js/notApiKey.js"></script>
+    <script src='https://polyfill.io/v3/polyfill.min.js?features=default'></script>
+    <script src='./assets/js/notApiKey.js'></script>
     <script src='./assets/js/main.js'></script>
 </body>
 </html>

@@ -22,20 +22,29 @@ main {
 }
 
 /*formats the letters inside the <span></span> that are nested inside the h1*/
-h1 span {
-    color: white;
+.header {
+    color: black;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 400px;
+}
+
+.header span {
+    color:whitesmoke;
 }
 
 img {
-    height: 60%;
-    width: 60%;
+    height: 100%;
+    width: 70%;
 }
 
 /*aligns the text within the footer to the center>*/
 footer {
     font-size: 18px;
     text-align: center;
-    margin: 20px;
+    padding-bottom: 30px;
 }
 
 /*allows for the content within this class to be resposive due to the implementation of flexbox*/
@@ -92,12 +101,13 @@ footer {
     transform: translateY(-0.25em);
 }
 
-.selected-sites {
+.saved-sites {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     width: 73%;
+    margin-top: 60px;
 }
 
 .site {
@@ -112,42 +122,15 @@ footer {
     background-color: white;
 }
 
-  .site:hover{
+.site:hover{
     border:3px solid #9dd1ff;
     box-shadow: 5 5em 5em -0.4 #48aaff;
     transform: scale(1.1,1.1)
   }
   
   /* added opacity to the card */
-.card{
-
+.card {
   opacity: 0.5;
-}
-/* blocked out this code for testing  */
-  /* .navbar ul{
-    background-color: rgb(87 83 78);
-    display:flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    list-style: none;
-    margin-top: 50px;
-    color: white;
-    font-weight: bolder;
-  } */
-
-
-  /* added color to the text so it will show up */
-  .text-part-two{
-  color: rgb(102, 99, 99);
-}
-  .header {
-    color: black;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 300px;
 }
 
 .main-content {
@@ -170,7 +153,7 @@ footer {
     bottom: 0;
     right: 0;
     opacity: 0.3;
-    background-image: url('https://p4.wallpaperbetter.com/wallpaper/193/487/615/tent-camping-milky-way-reflection-wallpaper-preview.jpg');
+    background-image: url('/assets/images/landingscreen.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -179,7 +162,8 @@ footer {
 
 .add-site{
     display: flex;
-    background-color: #2c962c;
+    background-color: whitesmoke;
+    border:3px solid black;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -187,8 +171,12 @@ footer {
     justify-content: center;
 }
 
+.add-site img {
+    width:60%;
+}
+
 .add-site:hover{
-    background-color: #36b036;
+    border:3px solid #9dd1ff;
 }
 
 #map {
@@ -241,7 +229,7 @@ fieldset{
         flex-direction: column;
     }
 
-    .selected-sites {
+    .saved-sites {
         flex-direction: row;
     }
 }

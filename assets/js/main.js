@@ -17,7 +17,8 @@ function initMap() {
     campsites.forEach(e => {
         const marker = new google.maps.Marker({
             position: {lat: e.lat, lng: e.lng},
-            map: map
+            map: map,
+            icon: "./assets/images/campsite.png"
         });
     })
 }
@@ -40,7 +41,8 @@ $(function () {
         campsites.push(newSite);
         const marker = new google.maps.Marker({
             position: {lat: newSite.lat, lng: newSite.lng},
-            map: map
+            map: map,
+            icon: "./assets/images/campsite.png"
         });
         marker.setMap(map);
         localStorage.setItem("campsites", JSON.stringify(campsites));
@@ -76,11 +78,12 @@ $(function () {
 
 function getWeather(lat, lng) {
     let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=4525e4c4d6900be2e3932d311208c64e&units=metric`;
+
     fetch(apiUrl).then(function (response) {
         return response.json();
     }).then(function (data) {
-        let dailyWeather = [];
         let currentDay = [];
+        let dailyWeather = [];
         // Split the data into separate days
         data.list.forEach((e) => { // For every element in the forecast
             if (currentDay.length === 0) { // If this is the first element, automatically at it to the first day
@@ -97,8 +100,16 @@ function getWeather(lat, lng) {
         });
         if (currentDay.length !== 0) dailyWeather.push(currentDay); // If this is the final day and has less than a full 24 hours of data, push it
         if (dailyWeather.length > 5) dailyWeather.shift(); // If there is more than 5 days, remove the first day
-
         console.log(dailyWeather);
+
+        dailyWeather.forEach(day =>{
+           day.forEach(hour =>{
+               if (hour.weather){
+
+               }
+           });
+        });
+
     });
 }
 

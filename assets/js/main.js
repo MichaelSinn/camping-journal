@@ -34,7 +34,10 @@ function addCampsite() {
             unique = false; // The name is not unique
         }
     });
-    if (!unique) return false; // Add in a warning / alert that the name is not unique
+    if (!unique){
+        $("#name").addClass("ui-state-error");
+        return false; // Add in a warning / alert that the name is not unique
+    }
     campsites.push(newSite);
     const marker = new google.maps.Marker({
         position: {lat: newSite.lat, lng: newSite.lng},
@@ -51,7 +54,6 @@ function addCampsite() {
 
 // Adding a modal for adding a campsite
 $(function () {
-
     dialog = newSiteForm.dialog({
         autoOpen: false,
         height: 400,

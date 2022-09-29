@@ -25,7 +25,16 @@ function addCampsite() {
         lat: latitude.val() * 1,
         lng: longitude.val() * 1
     };
-    campsites = JSON.parse(localStorage.getItem('campsites'));
+    campsites = JSON.parse(localStorage.getItem("campsites"));
+    // Check if name is unique
+    let unique = true;
+    campsites.forEach(e =>{
+        console.log(e.name.toLowerCase(), newSite.name.toLowerCase(), e.name.toLowerCase() === newSite.name.toLowerCase());
+        if (e.name.toLowerCase() === newSite.name.toLowerCase()){
+            unique = false; // The name is not unique
+        }
+    });
+    if (!unique) return false; // Add in a warning / alert that the name is not unique
     campsites.push(newSite);
     const marker = new google.maps.Marker({
         position: {lat: newSite.lat, lng: newSite.lng},
@@ -171,8 +180,8 @@ submitBtn.addEventListener('click', addSite)
 
 document.addEventListener('DOMContentLoaded', () => {
     let savedSite = localStorage.getItem('saved-sites');
-    
+
     if(savedSite) {
         document.querySelector('#saved-sites').prepend(savedSite);
-    } 
+    }
 })

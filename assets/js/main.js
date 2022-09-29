@@ -1,4 +1,6 @@
-const newSiteForm = $("#new-site-form");
+const submitBtn = document.querySelector('#submit-btn')
+const sitesForm = document.querySelector('.saved-sites')
+const newSiteForm = $('#new-site-form');
 
 let map;
 let script = document.createElement('script');
@@ -6,15 +8,15 @@ script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=in
 script.async = true;
 
 let dialog, form,
-    siteName = $("#name"),
-    latitude = $("#lat"),
-    longitude = $("#lng"),
+    siteName = $('#name'),
+    latitude = $('#lat'),
+    longitude = $('#lng'),
     allFields = $([]).add(siteName).add(latitude).add(longitude);
 
-let campsites = JSON.parse(localStorage.getItem("campsites"));
+let campsites = JSON.parse(localStorage.getItem('campsites'));
 if (!campsites) {
     campsites = [];
-    localStorage.setItem("campsites", JSON.stringify(campsites));
+    localStorage.setItem('campsites', JSON.stringify(campsites));
 }
 
 function addCampsite() {
@@ -37,12 +39,13 @@ function addCampsite() {
     const marker = new google.maps.Marker({
         position: {lat: newSite.lat, lng: newSite.lng},
         map: map,
-        icon: "./assets/images/campsite.png",
+        icon: './assets/images/campsite.png',
         title: newSite.name
     });
     marker.setMap(map);
-    localStorage.setItem("campsites", JSON.stringify(campsites));
-    dialog.dialog("close");
+    localStorage.setItem('campsites', JSON.stringify(campsites));
+    dialog.dialog('close');
+    addSite();
     return true;
 }
 
@@ -55,28 +58,28 @@ $(function () {
         width: 350,
         modal: true,
         buttons: {
-            "Add Campsite": addCampsite,
+            'Add Campsite': addCampsite,
             Cancel: function () {
-                dialog.dialog("close");
+                dialog.dialog('close');
             }
         },
         close: function () {
             form[0].reset();
-            allFields.removeClass("ui-state-error");
+            allFields.removeClass('ui-state-error');
         }
     });
-    form = dialog.find("form").on("submit", function (event) {
+    form = dialog.find('form').on('submit', function (event) {
         event.preventDefault();
         addCampsite();
     });
 
-    $("#add-site").button().on("click", function () {
-        dialog.dialog("open");
+    $('#add-site').button().on('click', function () {
+        dialog.dialog('open');
     });
 });
 
 function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
+    map = new google.maps.Map(document.getElementById('map'), {
         center: {lat: 43.650, lng: -79.386},
         zoom: 8
     });
@@ -84,32 +87,32 @@ function initMap() {
         const marker = new google.maps.Marker({
             position: {lat: e.lat, lng: e.lng},
             map: map,
-            icon: "./assets/images/campsite.png",
+            icon: './assets/images/campsite.png',
             title: e.name
         });
     });
 
-    map.addListener("click", (e) => {
+    map.addListener('click', (e) => {
         console.log(e.latLng.lat(), e.latLng.lng());
-        $("#lat").val(e.latLng.lat());
-        $("#lng").val(e.latLng.lng());
+        $('#lat').val(e.latLng.lat());
+        $('#lng').val(e.latLng.lng());
         let dialog = newSiteForm.dialog({
             autoOpen: false,
             height: 400,
             width: 350,
             modal: true,
             buttons: {
-                "Add Campsite": addCampsite,
+                'Add Campsite': addCampsite,
                 Cancel: function () {
-                    dialog.dialog("close");
+                    dialog.dialog('close');
                 }
             },
             close: function () {
                 form[0].reset();
-                allFields.removeClass("ui-state-error");
+                allFields.removeClass('ui-state-error');
             }
         });
-        dialog.dialog("open");
+        dialog.dialog('open');
     });
 }
 
@@ -127,7 +130,7 @@ function getWeather(lat, lng) {
                 currentDay.push(e);
             } else {
                 // Check whether the current segment is part of the same day as the previous segment
-                if (currentDay[currentDay.length - 1].dt_txt.split(" ")[0] !== e.dt_txt.split(" ")[0]) {
+                if (currentDay[currentDay.length - 1].dt_txt.split(' ')[0] !== e.dt_txt.split(' ')[0]) {
                     dailyWeather.push(currentDay); // Finish the current day's weather
                     currentDay = [e]; // Start the next day's weather
                 } else { // If it is part of the same day, add it
@@ -158,3 +161,27 @@ function getWeather(lat, lng) {
 window.initMap = initMap;
 
 document.head.appendChild(script);
+
+
+function addSite() {
+    // siteName = site.value;
+    const img = document.createElement('img')
+    img.src = '/assets/images/camping.png';
+    const siteName = 'New Site'
+    const newSite = document.createElement('div');
+    newSite.prepend(img);
+    newSite.textContent = siteName;
+    newSite.classList.add('site');
+    sitesForm.prepend(newSite);
+    localStorage.setItem('saved-sites', newSite);
+}
+
+submitBtn.addEventListener('click', addSite)
+
+document.addEventListener('DOMContentLoaded', () => {
+    let savedSite = localStorage.getItem('saved-sites');
+
+    if(savedSite) {
+        document.querySelector('#saved-sites').prepend(savedSite);
+    }
+})

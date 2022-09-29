@@ -2,7 +2,7 @@
 
 ## Overview
 
-As technology continues to advance, travelers of all kinds have become increasingly more dependent on travel related websites to gain valuable information regarding their desired destination. Campers in specific rely on this data to evaluate which campsite is most suitable for themselves and those they are camping with. Camp JRNL gives prospective campers the capability to retrieve this crucial information, allowing them to make informed decisions. Furthermore, Camp JRNL allows users to submit information on campsites they have reviewed, to ultimately provide more data to new users planning their next trip! Camp JRNL serves as a reference for current and prospective campers.
+As technology continues to advance, travelers of all kinds have become increasingly more dependent on travel related websites to gain valuable information regarding their desired destination. Campers in specific rely on this data to evaluate which campsite is most suitable for themselves, and those they are camping with. Camp JRNL gives prospective campers the capability to retrieve this crucial information, allowing them to make informed decisions. Furthermore, Camp JRNL allows users to submit information on campsites they have reviewed, to ultimately provide more data to new users planning their next trip! Camp JRNL serves as a reference for current and prospective campers.
 
 ## Features
 

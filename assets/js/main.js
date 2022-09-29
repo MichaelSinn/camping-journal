@@ -18,9 +18,14 @@ function initMap() {
         const marker = new google.maps.Marker({
             position: {lat: e.lat, lng: e.lng},
             map: map,
-            icon: "./assets/images/campsite.png"
+            icon: "./assets/images/campsite.png",
+            title: e.name
         });
-    })
+    });
+
+    map.addListener("rightclick", (e) => {
+        console.log(e.latLng.lat(), e.latLng.lng());
+    });
 }
 
 // Adding a modal for adding a campsite
@@ -42,7 +47,8 @@ $(function () {
         const marker = new google.maps.Marker({
             position: {lat: newSite.lat, lng: newSite.lng},
             map: map,
-            icon: "./assets/images/campsite.png"
+            icon: "./assets/images/campsite.png",
+            title: newSite.name
         });
         marker.setMap(map);
         localStorage.setItem("campsites", JSON.stringify(campsites));
@@ -104,8 +110,13 @@ function getWeather(lat, lng) {
 
         dailyWeather.forEach(day =>{
            day.forEach(hour =>{
-               if (hour.weather){
-
+               weatherCode = Math.floor(hour.weather.id / 100);
+               if (weatherCode === 2 || weatherCode === 5){
+                   // Thunderstorm or Rain - Alert
+               }else if(weatherCode === 3 || weatherCode === 6){
+                   // Drizzle or Snow - Warning
+               }else if(weatherCode === 8){
+                   // No hazardous weather - Clear
                }
            });
         });

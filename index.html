@@ -11,20 +11,39 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
     <title>Camp JRNL</title>
+    <!-- added the Bulma link, to add the Bulma libary -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 
 <body>
     <!--creates the header of the page (navbar, bg image)-->
-    <header class='main-content'>
-        <nav class='navbar'>
+    <!-- added style to the background of the to card -->
+    <!-- but the links dont work now  -->
+<header class='main-content '>
+    <div class="card nav-card">
+        <nav class="card-footer message">
+                <a href="#container" style="text-decoration: none;" class="column" class="card-footer-item" >Search Campsites</a>
+                <a href="#container" style="text-decoration: none;" class="column" class="card-footer-item">View Saved Sites</a> 
+                <a href="#container" style="text-decoration: none;"  class="column" class="card-footer-item">Give Your Review</a>
+        </nav>
+    </div> 
+
+    <!-- blocked ut this code for testing  -->
+        <!-- <nav class='navbar'>
             <ul>
                 <li><a href='#container'>Search Campsites</a></li>
                 <li><a href='#container'>View Saved Sites</a></li>
                 <li><a href='#container'>Give Your Review</a></li>
+                <li class="is-active"><a href="#" aria-current="page">Breadcrumb</a></li>
             </ul>
-        </nav>
-        <section class='header'>
-            <h1>CAMP JRNL. <span>YOUR ONE STOP CAMPSITE FINDER</span></h1>
+        </nav> -->
+        
+    
+    
+    <!-- added style to the background of the "header" class -->
+        <section class='header message'>
+             <!-- added a new class so I can edit the text -->
+            <h1>CAMP JRNL. <span class="text-part-two">YOUR ONE STOP CAMPSITE FINDER</span></h1>
         </section>
     </header>
     <div id="new-site-form" title="New campsite">

@@ -112,15 +112,18 @@ footer {
     background-color: white;
 }
 
-.site:hover {
-    border: 3px solid #9dd1ff;
-    /*box-shadow: 5 5em 5em -0.4 #48aaff;*/
-    transform: scale(1.1, 1.1)
+  .site:hover{
+    border:3px solid #9dd1ff;
+    box-shadow: 5 5em 5em -0.4 #48aaff;
+    transform: scale(1.1,1.1)
+  }
+.card{
+  opacity: 0.5;
 }
-
-
-.navbar ul {
-    display: flex;
+/* blocked out this code for testing  */
+  /* .navbar ul{
+    background-color: rgb(87 83 78);
+    display:flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     align-items: center;
@@ -128,10 +131,16 @@ footer {
     margin-top: 50px;
     color: white;
     font-weight: bolder;
-}
+  } */
 
-.header {
-    display: flex;
+
+  /* added color to the text so it will show up */
+  .text-part-two{
+  color: rgb(102, 99, 99);
+}
+  .header {
+    color: black;
+    display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -148,7 +157,7 @@ footer {
 .main-content h1 {
     font-size: 40px;
     font-weight: bolder;
-}
+  }
 
 .main-content::before {
     content: '';
@@ -183,7 +192,6 @@ footer {
     height: 500px;
     width: 500px;
 }
-
 
 /*--------------------media query-------------------*/
 /*Once the users screen is 900px or greater, this code will run*/

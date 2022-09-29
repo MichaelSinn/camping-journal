@@ -19,7 +19,7 @@ Link to [Live Website](https://michaelsinn.github.io/camping-journal/)
 
 ### WireFrame
 
-![wireframe](assets/images/home-page.png))
+![wireframe](assets/images/home-page.png)
 
 ### WorkFlow Chart
 

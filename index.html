@@ -11,7 +11,7 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js'></script>
     <title>Camp JRNL</title>
-    <!-- added the Bulma link, to add the Bulma libary -->
+    <!-- added the Bulma link, to add the Bulma library -->
     <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css'>
 </head>
 
@@ -56,50 +56,52 @@
     <!--The view map, and filter data areas are contained within individual sections-->
     <section id='container' class='panel'>
         <article class='filter'>
+            <label for="filter-weather">Weather</label>
             <input id='filter-weather' type='text' placeholder='Weather'/>
+            <label for="filter-location">Location</label>
             <input id='filter-location' type='text' placeholder='Distance'/>
             <button id='submit-btn' class='view-button'>Submit</button>
         </article>
 
-        <article class='filter' id='map'>
+            <article class='filter' id='map'>
 
-        </article>
-    </section>
-    <!--creates section that contains the users saved sites-->
-    <section id='selected-sites' class='saved-sites'>
-        <div class='site'>
-            <img src='assets/images/camping.png' alt='image-icon'/>
-            <span>Site</span>
-        </div>
-        <div class='site'>
-            <img src='assets/images/camping.png' alt='image-icon'/>
-            <span>Site</span>
-        </div>
-        <div class='site'>
-            <img src='assets/images/camping.png' alt='image-icon'/>
-            <span>Site</span>
-        </div>
-        <div class='site'>
-            <img src='assets/images/camping.png' alt='image-icon'/>
-            <span>Site</span>
-        </div>
-        <div class='site'>
-            <img src='assets/images/camping.png' alt='image-icon'/>
-            <span>Site</span>
-        </div>
-        <div class='add-site' id='add-site'>
-            <img src='assets/images/plus-icon.png' alt='plus-icon'>
-        </div>
-    </section>
-</main>
+            </article>
+        </section>
+        <!--creates section that contains the users saved sites-->
+        <section id='selected-sites' class='saved-sites'>
+            <div class='site'>
+                <img src='assets/images/camping.png' alt='image-icon'/>
+                <span>Site</span>
+            </div>
+            <div class='site'>
+                <img src='assets/images/camping.png' alt='image-icon'/>
+                <span>Site</span>
+            </div>
+            <div class='site'>
+                <img src='assets/images/camping.png' alt='image-icon'/>
+                <span>Site</span>
+            </div>
+            <div class='site'>
+                <img src='assets/images/camping.png' alt='image-icon'/>
+                <span>Site</span>
+            </div>
+            <div class='site'>
+                <img src='assets/images/camping.png' alt='image-icon'/>
+                <span>Site</span>
+            </div>
+            <div class='add-site' id='add-site'>
+                <img src='assets/images/plus-icon.png' alt='plus-icon'>
+            </div>
+        </section>
+    </main>
 
-<!--this creates the footer of the webpage-->
-<footer>
-    <h2>@2022 Camp JRNL</h2>
-</footer>
+    <!--this creates the footer of the webpage-->
+    <footer>
+        <h2>@2022 Camp JRNL</h2>
+    </footer>
 
-<script src='https://polyfill.io/v3/polyfill.min.js?features=default'></script>
-<script src='./assets/js/notApiKey.js'></script>
-<script src='./assets/js/main.js'></script>
+    <script src='https://polyfill.io/v3/polyfill.min.js?features=default'></script>
+    <script src='./assets/js/notApiKey.js'></script>
+    <script src='./assets/js/main.js'></script>
 </body>
 </html>

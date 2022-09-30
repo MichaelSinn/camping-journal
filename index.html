@@ -7,12 +7,12 @@
     <link href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet'>
     <link rel='stylesheet' href='./assets/css/reset.css'>
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css'>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css'>
     <link rel='stylesheet' href='./assets/css/style.css'>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js'></script>
     <title>Camp JRNL</title>
     <!-- added the Bulma link, to add the Bulma library -->
-    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css'>
 </head>
 
 <body>
@@ -56,13 +56,14 @@
 <main>
     <!--The view map, and filter data areas are contained within individual sections-->
     <section id='container' class='panel'>
-        <article class='filter'>
+        <form class='filter'>
+            <h2>Filter Campsites</h2>
             <label for="filter-weather">Weather</label>
             <input id='filter-weather' type='text' placeholder='Weather'/>
             <label for="filter-location">Location</label>
             <input id='filter-location' type='text' placeholder='Distance'/>
             <button id='submit-btn' class='view-button'>Submit</button>
-        </article>
+        </form>
 
         <article class='filterMap' id='map'>
 
@@ -70,25 +71,8 @@
     </section>
     <!--creates section that contains the users saved sites-->
     <section id='selected-sites' class='saved-sites'>
-        <div class='site'>
-            <img src='assets/images/camping.png' alt='image-icon'/>
-            <span>Site</span>
-        </div>
-        <div class='site'>
-            <img src='assets/images/camping.png' alt='image-icon'/>
-            <span>Site</span>
-        </div>
-        <div class='site'>
-            <img src='assets/images/camping.png' alt='image-icon'/>
-            <span>Site</span>
-        </div>
-        <div class='site'>
-            <img src='assets/images/camping.png' alt='image-icon'/>
-            <span>Site</span>
-        </div>
-        <div class='site'>
-            <img src='assets/images/camping.png' alt='image-icon'/>
-            <span>Site</span>
+        <div class="site-container" id="site-container">
+
         </div>
         <div class='add-site' id='add-site'>
             <img src='assets/images/plus-icon.png' alt='plus-icon'>

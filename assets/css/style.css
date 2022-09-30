@@ -21,6 +21,11 @@ main {
     margin: auto;
 }
 
+h3 {
+    font-size: 1.5em;
+    color: black;
+}
+
 /*formats the letters inside the <span></span> that are nested inside the h1*/
 .header {
     color: black;
@@ -103,14 +108,45 @@ footer {
 .site {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    height: 150px;
-    width: 150px;
     background-color: white;
-    transition: transform 200ms ease-in-out;
+    transition: transform 200ms;
+    margin-right: 10px;
+    border-radius: 5px;
+    max-width: 175px;
+}
+
+.site-body{
+    width: 100%;
+    height: 100%;
+    background-color: #dcdcdc;
+    padding: 10px;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.site-body p{
+    line-height: 1.15em;
+    margin-bottom: 5px;
+}
+
+.site-body button{
+    border-radius: 5px;
+    border: none;
+    background-color: #198f68;
+    padding: 8px 20px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.site-body button:hover{
+    background-color: #117a57;
+}
+
+.site img{
+    height: 100px;
+    width: 100px;
 }
 
 
@@ -203,7 +239,7 @@ fieldset{
 
 .site:hover{
     border:3px solid #ffbcb1;
-    transform: scale(1.2,1.2)
+    transform: scale(1.1,1.1)
 }
 
 .add-site:hover{
@@ -219,10 +255,11 @@ fieldset{
         flex-direction: row;
     }
     .filter {
+        display: flex;
+        flex-direction: column;
         border: 1px solid #ffbcb1;
-        padding: 25px 50px;
-        text-align: center;
         align-items: center;
+        padding: 10px 20px;
         display: flex;
         flex-wrap:wrap;
         margin-right: 10px;

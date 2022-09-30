@@ -21,6 +21,11 @@ main {
     margin: auto;
 }
 
+h3 {
+    font-size: 1.5em;
+    color: black;
+}
+
 /*formats the letters inside the <span></span> that are nested inside the h1*/
 .header {
     color: black;
@@ -100,17 +105,20 @@ footer {
     width:80%;
 }
 
+<<<<<<< HEAD
+=======
+.site-container{
+    display: flex;
+    flex-direction: row;
+}
+>>>>>>> 13c06902d1546b2a9eb9ee64dde4373b7dc6e130
 
 .site {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    height: 150px;
-    width: 150px;
     background-color: white;
+<<<<<<< HEAD
     transition: transform 200ms ease-in-out;
     
     /* added these to make it look smoother */
@@ -118,6 +126,45 @@ footer {
     border-top-left-radius: 200px;
     border-top-right-radius: 200px;
     border: 3px solid #f0b59aaf;
+=======
+    transition: transform 200ms;
+    margin-right: 15px;
+    border-radius: 5px;
+    max-width: 175px;
+}
+
+.site-body{
+    width: 100%;
+    height: 100%;
+    background-color: #d1fffd;
+    padding: 10px;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.site-body p{
+    line-height: 1.15em;
+    margin-bottom: 5px;
+}
+
+.site-body button{
+    border-radius: 5px;
+    border: none;
+    background-color: #198f68;
+    padding: 8px 20px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.site-body button:hover{
+    background-color: #117a57;
+}
+
+.site img{
+    height: 100px;
+    width: 100px;
+>>>>>>> 13c06902d1546b2a9eb9ee64dde4373b7dc6e130
 }
 
 
@@ -210,8 +257,7 @@ fieldset{
 }
 
 .site:hover{
-    border:3px solid #ffbcb1;
-    transform: scale(1.2,1.2)
+    transform: scale(1.1,1.1)
 }
 
 .add-site:hover{
@@ -277,11 +323,11 @@ fieldset{
         flex-direction: row;
     }
     .filter {
-        border: 1px solid #ffbcb1;
-        padding: 25px 50px;
-        text-align: center;
-        align-items: center;
         display: flex;
+        flex-direction: column;
+        border: 1px solid #ffbcb1;
+        align-items: center;
+        padding: 10px 20px;
         flex-wrap:wrap;
         margin-right: 10px;
     }

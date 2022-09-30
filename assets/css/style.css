@@ -73,6 +73,7 @@ footer {
 .filter, .filterMap{
     display:flex;
     border-bottom: 1px solid #ffbcb1;
+    border-radius: 6%;
     align-items: center;
     justify-content: space-evenly;
     transition: transform 200ms ease-in-out;
@@ -81,9 +82,9 @@ footer {
 /*formats the buttons in the webpage*/
 .view-button {
     background-color: white;
-    border: 1px solid #ffbcb1;
+    border: 0.5px solid rgb(85, 79, 79);
     border-radius: 10px;
-    color: #c18277;
+    color: #918887;
     display: inline-block;
     padding: 15px 35px;
     text-decoration: none;
@@ -107,7 +108,8 @@ footer {
 
 .site-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    margin: 10px;
 }
 
 .site {
@@ -175,7 +177,7 @@ footer {
     left: 0;
     bottom: 0;
     right: 0;
-    opacity: 0.3;
+    opacity: 0.45;
     background-image: url('/assets/images/landingscreen.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -232,6 +234,7 @@ fieldset{
 /*changes background color of buttons when hovering over them*/
 .view-button:hover, .view-button:focus {
     background-color: #ffbcb1;
+    color:white;
     cursor: pointer;
 }
 
@@ -239,14 +242,14 @@ fieldset{
 /*when hovering over each  section, the section will gain a border outline*/
 .filter:hover, .filterMap:hover {
     border: 3px solid #ffbcb1;
-    transform: translateY(-0.25em);
 }
 
-.site:hover{
-    transform: scale(1.1,1.1)
+.site:hover {
+    border:3px solid #ffbcb1;
+    transform: scale(1.2,1.2)
 }
 
-.add-site:hover{
+.add-site:hover, .add-site:focus{
     border:3px solid #ffbcb1;
 }
 
@@ -285,6 +288,10 @@ fieldset{
         margin: 30px 50px;
     }
     .saved-sites {
+        flex-direction: row;
+    }
+    .site-container{
+        display: flex;
         flex-direction: row;
     }
 }

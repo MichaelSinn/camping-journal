@@ -8,7 +8,7 @@ let script = document.createElement('script');
 script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
 script.async = true;
 
-let dialog, form,
+let newSiteDialog, editSiteDialog, form, form1,
     siteName = $('#name'),
     latitude = $('#lat'),
     longitude = $('#lng'),
@@ -35,7 +35,10 @@ function addCampsite() {
             unique = false; // The name is not unique
         }
     });
-    if (!unique) return false; // Add in a warning / alert that the name is not unique
+    if (!unique){
+        $("#name").addClass("ui-state-error");
+        return false;
+    }  // Add in a warning / alert that the name is not unique
     campsites.push(newSite);
     const marker = new google.maps.Marker({
         position: {lat: newSite.lat, lng: newSite.lng},
@@ -45,14 +48,14 @@ function addCampsite() {
     });
     marker.setMap(map);
     localStorage.setItem('campsites', JSON.stringify(campsites));
-    dialog.dialog('close');
+    newSiteDialog.dialog('close');
     addSite(newSite.name);
     return true;
 }
 
 // Adding a modal for adding a campsite
 $(function () {
-    let dialog = newSiteForm.dialog({
+    newSiteDialog = newSiteForm.dialog({
         autoOpen: false,
         height: 400,
         width: 350,
@@ -60,7 +63,7 @@ $(function () {
         buttons: {
             'Add Campsite': addCampsite,
             Cancel: function () {
-                dialog.dialog('close');
+                newSiteDialog.dialog('close');
             }
         },
         close: function () {
@@ -68,15 +71,42 @@ $(function () {
             allFields.removeClass('ui-state-error');
         }
     });
-    form = dialog.find('form').on('submit', function (event) {
+    form = newSiteDialog.find('form').on('submit', function (event) {
         event.preventDefault();
         addCampsite();
     });
 
     $('#add-site').button().on('click', function () {
-        dialog.dialog('open');
+        newSiteDialog.dialog('open');
     });
 });
+
+$(function(){
+    editSiteDialog = editSiteForm.dialog({
+        autoOpen: false,
+        height: 700,
+        width: 550,
+        modal: true,
+        buttons: {
+            'Save': saveSite, // Replace with function that should be called on save
+            Cancel: function () {
+                editSiteDialog.dialog('close');
+            }
+        },
+        close: function () {
+            form1[0].reset();
+            allFields.removeClass('ui-state-error');
+        }
+    });
+    form1 = editSiteDialog.find('form').on('submit', function (event) {
+        event.preventDefault();
+        addCampsite(); // Replace with function that should be called on save
+    });
+});
+
+function saveSite(){
+    return false;
+}
 
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
@@ -98,23 +128,8 @@ function initMap() {
         console.log(e.latLng.lat(), e.latLng.lng());
         $('#lat').val(e.latLng.lat());
         $('#lng').val(e.latLng.lng());
-        let dialog = newSiteForm.dialog({
-            autoOpen: false,
-            height: 400,
-            width: 350,
-            modal: true,
-            buttons: {
-                'Add Campsite': addCampsite,
-                Cancel: function () {
-                    dialog.dialog('close');
-                }
-            },
-            close: function () {
-                form[0].reset();
-                allFields.removeClass('ui-state-error');
-            }
-        });
-        dialog.dialog('open');
+
+        newSiteDialog.dialog('open');
     });
 }
 
@@ -172,30 +187,10 @@ function addSite(siteName) {
                      <div class='site-body'> 
                      <h3>${siteName}</h3> 
                      <p>Description of site goes here</p> 
-                     <button id="view-site">View Site</button> </div>`);
+                     <button id="view-site-${siteName}">View Site</button> </div>`);
     sitesForm.append(newSite);
-    $("#view-site").button().on("click", function(){
-        let dialog = editSiteForm.dialog({
-            autoOpen: false,
-            height: 700,
-            width: 550,
-            modal: true,
-            buttons: {
-                'Save': null, // Replace with function that should be called on save
-                Cancel: function () {
-                    dialog.dialog('close');
-                }
-            },
-            close: function () {
-                form[0].reset();
-                allFields.removeClass('ui-state-error');
-            }
-        });
-        form = dialog.find('form').on('submit', function (event) {
-            event.preventDefault();
-            // addCampsite(); // Replace with function that should be called on save
-        });
-        dialog.dialog('open');
+    $(`#view-site-${siteName}`).button().on("click", function(){
+        editSiteDialog.dialog('open');
     });
 }
 

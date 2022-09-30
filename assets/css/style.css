@@ -1,4 +1,5 @@
-/*--------------------------------------- Global Selectors----------------------------------*/
+/*-------------------------------------------- Global Selectors -------------------------------------------------*/
+/* Default font-family */
 html {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
@@ -25,44 +26,72 @@ h3 {
     color: black;
 }
 
-/*formats the letters inside the <span></span> that are nested inside the h1*/
+/* Aligns all text within the header class */
 .header {
     color: black;
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-top: 200px;
 }
 
+/* Formats the letters inside the <span></span> that are nested inside the h1 */
 .header span {
     color:whitesmoke;
 }
 
-/*styles navbar logo*/
+/*--------------------------------------------- Landing Page --------------------------------------------*/
+/* Creates transparent background over the background image and displays viewheight of 100 to user */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(131, 122, 122);
+    height: 100vh;
+}
+
+.main-content h1 {
+    font-size: 40px;
+    font-weight: bolder;
+  }
+
+/* The image lnked below is displayed as the background image */
+.main-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.45;
+    background-image: url('/assets/images/landingscreen.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+/*---------------------------------------------- Navigation Bar --------------------------------------------*/
+/* Styles navbar logo */
 nav img {
     width: 2%;
 }
 
-/* added opacity to the card */
+/* Navbars opaciy level */
 .card {
     opacity: 0.3;
 }
+
+/* NavBars text opacity level */
 .card-footer {
     opacity: 1;
     font-weight: bolder;
-  }
-  
-/*aligns the text within the footer to the center>*/
-footer {
-    font-size: 18px;
-    text-align: center;
-    padding-bottom: 30px;
 }
 
-/*allows for the content within this class to be responsive due to the implementation of flexbox*/
+/*--------------------------------------------------- Main Content -------------------------------------------*/
+/* Formats code within this container, ensures code within is responsive */
 .panel {
-    background-color: white;
+    background-color: whitesmoke;
     border-radius: 10px;
     padding: 15px 25px;
     max-width: 800px;
@@ -73,6 +102,7 @@ footer {
     margin: 40px 40px 10px;
 }
 
+/* Styles and formats the two sections within the panel container */
 .filter, .filterMap{
     display:flex;
     border-bottom: 1px solid #ffbcb1;
@@ -87,9 +117,16 @@ footer {
     flex-wrap: wrap;
 }
 
-/*formats the buttons in the webpage*/
-.view-button {
-    background-color: white;
+/* Centers the text within the footer */
+footer {
+    font-size: 18px;
+    text-align: center;
+    padding-bottom: 30px;
+}
+/*---------------------------------------------------- Buttons --------------------------------------------------*/
+/* Styles the buttons used in the application, adds smooth transition when hovering over*/
+.view-button, .start-button {
+    background-color: whitesmoke;
     border: 0.5px solid rgb(85, 79, 79);
     border-radius: 10px;
     color: #918887;
@@ -99,7 +136,16 @@ footer {
     margin: 25px 0;
     transition: background-color 200ms ease-in-out;
 }
+ 
+.start-button {
+    background-color: rgb(224, 207, 207);
+    border: 0.5px solid #ffbcb1;
+    color: #918887;
+    font-weight: bolder;
+}
 
+/*----------------------------------------------------- Saved Sites -----------------------------------------------*/
+/* Cleanly spaces and aligns the users saved sites */
 .saved-sites {
     display: flex;
     flex-direction: column;
@@ -109,22 +155,16 @@ footer {
     margin-top: 60px;
 }
 
-/*formats saved-site icon*/
-.saved-sites img {
-    width:80%;
-}
-
 .site-container{
     margin: 10px;
     display: flex;
     flex-direction: row;
 }
 
+/* Styles the users saved sites, adds smooth transition when hovering over each individual site */
 .site {
     align-items: center;
-    background-color: white;
-    /* added these to make it look smoother */
-    /* feel free to remove them if you want  */
+    background-color: whitesmoke;
     border: 3px solid #f0b59aaf;
     transition: transform 200ms;
     margin-right: 15px;
@@ -145,53 +185,25 @@ footer {
     margin-bottom: 5px;
 }
 
+/* Styles and aligns saved-site icon */
 .site-body button{
     border-radius: 5px;
     border: none;
     background-color: #198f68;
     padding: 8px 20px;
-    color: white;
+    color: whitesmoke;
     cursor: pointer;
     transition: all 0.2s;
 }
 
-.site-body button:hover{
-    background-color: #117a57;
-}
-
-.site img{
+/* Formats saved-site icon */
+.site img {
+    margin: 10px 30px;
     height: 100px;
     width: 100px;
 }
 
-/*-----------------------------main-content formats the landing page background--------------------------*/
-.main-content {
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(131, 122, 122);
-    height: 100vh;
-}
-
-.main-content h1 {
-    font-size: 40px;
-    font-weight: bolder;
-  }
-
-.main-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    opacity: 0.45;
-    background-image: url('/assets/images/landingscreen.jpeg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-}
-
+/* Styles the plus icon to add a site */
 .add-site{
     display: flex;
     background-color: whitesmoke;
@@ -208,22 +220,24 @@ footer {
     width:60%;
 }
 
-/*formats map*/
+/* Formats map */
 #map {
     height: 500px;
 }
-/* added border so it will look nice */
+
+/* Styles border of the below ID */
 #new-site-form{
   outline: solid 1px rgba(150, 155, 150, 0.452);
   border-radius: 10px 10px 10px 10px; 
 }
-/* added margin so it will fit properly  */
+
+/* Added margin so it will fit properly */
 .validateTips{
   margin-bottom: 20px;
   margin-top: 10px;
- 
 }
-/* made the content fit properly in the middle */
+
+/* Ensures content is centered and fits */
 fieldset{
   display: flex; 
   flex-direction: column;
@@ -231,7 +245,8 @@ fieldset{
   outline: solid 1px rgba(11, 59, 11, 0.452);
   border-radius: 10px 10px 10px 10px;   
 }
-/* added space between the top and bottom so it will look nicer  */
+
+/* Formats spacing and margins of the following IDs */
 #name, #lat, #lng { 
   margin-bottom: 10px;
   margin-top: 10px;
@@ -239,15 +254,21 @@ fieldset{
   outline: solid 1px rgba(11, 59, 11, 0.452);
 }
 
-/*changes background color of buttons when hovering over them*/
+/* Styles input boxes */
+#filter-weather, #filter-location {
+    background-color: whitesmoke;
+    border: 0.5px solid rgb(85, 79, 79)
+}
+
+/* Changes background color of buttons when hovering over them */
 .view-button:hover, .view-button:focus {
     background-color: #ffbcb1;
-    color:white;
+    color:whitesmoke;
     cursor: pointer;
 }
 
-/*creates interaction with the user*/
-/*when hovering over each  section, the section will gain a border outline*/
+/* Creates interaction with the user */
+/* When hovering over each  section, the section will gain a border outline */
 .filter:hover, .filterMap:hover {
     border: 3px solid #ffbcb1;
     transform: translateY(-0.25em);
@@ -261,12 +282,14 @@ fieldset{
 .add-site:hover, .add-site:focus{
     border:3px solid #ffbcb1;
 }
+.site-body button:hover{
+    background-color: #117a57;
+}
 
-/* added a scroll wheel to the campsite */
+/*------------------------------------------------- Scroll Wheels ----------------------------------------------*/
 #selected-sites{
     display: grid;
     grid-auto-flow: column;
-    /*grid-auto-columns: 21%;*/
     overflow-x: auto;
     background-color: #e1c3e725;
     border: 3px solid #f5b8b8af;
@@ -283,12 +306,12 @@ fieldset{
 }
 
 ::-webkit-scrollbar-thumb{
-    border: 3px solid #000000a1;
+    border: 3px solid #151515;
     border-radius: 100px;
     background: linear-gradient(rgb(243, 161, 161), rgba(206, 17, 17, 0.555));
 }
 
-/* styled the scrollbar of campsites */
+/* Styles the scrollbar undernearth the users saved sites*/
 #selected-sites::-webkit-scrollbar{
     width: .7em;
 }
@@ -307,10 +330,10 @@ fieldset{
     background-color: rgba(145, 56, 56, 0.836);
    
 }
-/*---------------------------------------media query----------------------------------------*/
-/*Once the users screen is 900px or greater, this code will run*/
-/*Changes the flex-direction of the panel class to rows from columns*/
-/*adjusts the margins to format cleaner for larger screen dimensions*/
+/*----------------------------------------------------- Media Query --------------------------------------------------*/
+/* Once the users screen is 900px or greater, this code will run */
+/* Changes the flex-direction of the panel class to rows from columns */
+/* Adjusts the margins to format cleaner for larger screen dimensions */
 @media (min-width: 900px) {
     .panel {
         max-width: 960px;
@@ -343,7 +366,7 @@ fieldset{
         margin: 30px 50px;
     }
     .add-site {
-        margin: 60px 0px 0px 30px;
+        margin: 60px 0 0 30px;
     }
     .header {
         margin-top: 400px;

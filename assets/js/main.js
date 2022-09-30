@@ -1,4 +1,3 @@
-const submitBtn = document.querySelector('#submit-btn')
 const sitesForm = $("#site-container");
 const newSiteForm = $('#new-site-form');
 const editSiteForm = $("#edit-site-form");
@@ -20,9 +19,21 @@ if (!campsites) {
     localStorage.setItem('campsites', JSON.stringify(campsites));
 }
 
+// UUID function from https://www.w3resource.com/javascript-exercises/javascript-math-exercise-23.php
+function create_UUID(){
+    let dt = new Date().getTime();
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        let r = (dt + Math.random() * 16) % 16 | 0;
+        dt = Math.floor(dt / 16);
+        return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+}
+
 function addCampsite() {
+    let uuid = create_UUID();
     let newSite = {
         name: siteName.val(),
+        id: uuid,
         lat: latitude.val() * 1,
         lng: longitude.val() * 1
     };
@@ -49,7 +60,7 @@ function addCampsite() {
     marker.setMap(map);
     localStorage.setItem('campsites', JSON.stringify(campsites));
     newSiteDialog.dialog('close');
-    addSite(newSite.name);
+    addSite(newSite.name, newSite.id);
     return true;
 }
 
@@ -81,6 +92,7 @@ $(function () {
     });
 });
 
+// Adding a modal for editing a campsite
 $(function(){
     editSiteDialog = editSiteForm.dialog({
         autoOpen: false,
@@ -100,12 +112,23 @@ $(function(){
     });
     form1 = editSiteDialog.find('form').on('submit', function (event) {
         event.preventDefault();
-        addCampsite(); // Replace with function that should be called on save
+        saveSite();
     });
 });
 
 function saveSite(){
-    return false;
+    let editSiteId = editSiteForm.find("input#hidden-id").val();
+    let editCard = $(`#${editSiteId}`);
+    let editNameValue = editSiteForm.find("input#edit-name").val();
+    campsites = JSON.parse(localStorage.getItem("campsites"));
+    campsites.forEach(e =>{
+        if (e.id === editSiteId){
+            e.name = editNameValue;
+        }
+    });
+    editCard.find("h3").text(editNameValue);
+    localStorage.setItem("campsites", JSON.stringify(campsites));
+    editSiteDialog.dialog("close");
 }
 
 function initMap() {
@@ -121,7 +144,7 @@ function initMap() {
             title: e.name
         });
 
-        addSite(e.name);
+        addSite(e.name, e.id);
     });
 
     map.addListener('click', (e) => {
@@ -179,22 +202,22 @@ window.initMap = initMap;
 
 document.head.appendChild(script);
 
-
-function addSite(siteName) {
-    const newSite = $('<div>');
-    newSite.addClass("site");
-    newSite.html(`<img src='assets/images/camping.png' alt='image-icon'/>
+function addSite(siteName, siteID) {
+    const newSiteEl = $('<div>');
+    newSiteEl.addClass("site");
+    newSiteEl.attr("id", siteID);
+    newSiteEl.html(`<img src='assets/images/camping.png' alt='image-icon'/>
                      <div class='site-body'> 
                      <h3>${siteName}</h3> 
                      <p>Description of site goes here</p> 
-                     <button id="view-site-${siteName}">View Site</button> </div>`);
-    sitesForm.append(newSite);
-    $(`#view-site-${siteName}`).button().on("click", function(){
+                     <button id="view-site-${siteID}">View Site</button> </div>`);
+    sitesForm.append(newSiteEl);
+    $(`#view-site-${siteID}`).button().on("click", function(){
+        editSiteForm.find("input#edit-name").val(siteName);
+        editSiteForm.find("input#hidden-id").val(siteID);
         editSiteDialog.dialog('open');
     });
 }
-
-submitBtn.addEventListener('click', addSite)
 
 document.addEventListener('DOMContentLoaded', () => {
     let savedSite = localStorage.getItem('saved-sites');

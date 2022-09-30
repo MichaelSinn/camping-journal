@@ -52,31 +52,31 @@
     </form>
 </div>
 
-
-<!--<div id='edit-site-form' title='Campsite'>-->
-<!--    <form>-->
-<!--        <fieldset>-->
-<!--            <label for='edit-name'>Name</label>-->
-<!--            <input type='text' name='name' id='edit-name' value='' class='text ui-widget-content ui-corner-all'>-->
-<!--            <label for='season'>Season</label>-->
-<!--            <select type='text' name='season' id='season' class='text ui-widget-content ui-corner-all'>-->
-<!--                <option>All Season</option>-->
-<!--                <option>Three Season</option>-->
-<!--                <option>Winter</option>-->
-<!--                <option>Summer</option>-->
-<!--            </select>-->
-<!--            <label for='rating'>Rating</label>-->
-<!--            <input type='text' name='rating' id='rating' value='' class='text ui-widget-content ui-corner-all'>-->
-<!--            &lt;!&ndash; Allow form submission with keyboard without duplicating the dialog button &ndash;&gt;-->
-<!--            <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>-->
-<!--        </fieldset>-->
-<!--    </form>-->
-<!--    &lt;!&ndash; Add the weather here &ndash;&gt;-->
-<!--    <section>-->
-<!--        <h3>Weather Forecast</h3>-->
-<!--        <div id="weatherForecast"></div>-->
-<!--    </section>-->
-<!--</div>-->
+<div id='edit-site-form' title='Campsite'>
+    <form>
+        <fieldset>
+            <input type="hidden" id="hidden-id">
+            <label for='edit-name'>Name</label>
+            <input type='text' name='name' id='edit-name' value='' class='text ui-widget-content ui-corner-all'>
+            <label for='season'>Season</label>
+            <select type='text' name='season' id='season' class='text ui-widget-content ui-corner-all'>
+                <option>All Season</option>
+                <option>Three Season</option>
+                <option>Winter</option>
+                <option>Summer</option>
+            </select>
+            <label for='rating'>Rating</label>
+            <input type='text' name='rating' id='rating' value='' class='text ui-widget-content ui-corner-all'>
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
+        </fieldset>
+    </form>
+    <!-- Add the weather here -->
+    <section>
+        <h3>Weather Forecast</h3>
+        <div id="weatherForecast"></div>
+    </section>
+</div>
 <!--main content-->
 <main>
     <!-- The view map, and filter data areas are contained within individual sections -->

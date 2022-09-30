@@ -1,15 +1,15 @@
-/*----------------------------global selectors----------------------*/
+/*--------------------------------------- Global Selectors----------------------------------*/
 html {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
 
-/*gives the code/content within the body the below background color*/
+/* Body will contain below background color */
 body {
     background: #ffbcb1;
 }
 
-/*formats all code within <main></main>*/
+/* Formats all code within <main></main>, ensures code is responsive */
 main {
     background: rgba(255, 255, 255, 0.2);
     display: flex;
@@ -18,7 +18,11 @@ main {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin: auto;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: black;
 }
 
 h3 {
@@ -30,10 +34,10 @@ h3 {
 .header {
     color: black;
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: 400px;
+    margin-top: 200px;
 }
 
 .header span {
@@ -48,6 +52,10 @@ nav img {
 /* added opacity to the card */
 .card {
     opacity: 0.3;
+}
+.card-footer {
+    opacity: 1;
+    font-weight: bolder;
   }
   
 /*aligns the text within the footer to the center>*/
@@ -62,12 +70,12 @@ footer {
     background-color: white;
     border-radius: 10px;
     padding: 15px 25px;
-    max-width: 960px;
+    max-width: 800px;
     display: flex;
     flex-direction: column;
     text-align: center;
     text-transform: uppercase;
-    margin: 40px 40px 200px;
+    margin: 40px 40px 10px;
 }
 
 .filter, .filterMap{
@@ -77,6 +85,11 @@ footer {
     align-items: center;
     justify-content: space-evenly;
     transition: transform 200ms ease-in-out;
+}
+
+.filter {
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 /*formats the buttons in the webpage*/
@@ -110,6 +123,7 @@ footer {
     margin: 10px;
     display: flex;
     flex-direction: row;
+
 }
 
 .site {
@@ -156,6 +170,49 @@ footer {
     width: 100px;
 }
 
+.site {
+    align-items: center;
+    background-color: white;
+    /* added these to make it look smoother */
+    /* feel free to remove them if you want  */
+    border: 3px solid #f0b59aaf;
+    transition: transform 200ms;
+    margin-right: 15px;
+    border-radius: 5px;
+    width: 175px;
+}
+
+.site-body{
+    width: 100%;
+    background-color: #d1fffd;
+    padding: 10px;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.site-body p{
+    line-height: 1.15em;
+    margin-bottom: 5px;
+}
+
+.site-body button{
+    border-radius: 5px;
+    border: none;
+    background-color: #198f68;
+    padding: 8px 20px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.site-body button:hover{
+    background-color: #117a57;
+}
+
+.site img{
+    height: 100px;
+    width: 100px;
+}
 
 /*-----------------------------main-content formats the landing page background--------------------------*/
 .main-content {
@@ -178,7 +235,7 @@ footer {
     bottom: 0;
     right: 0;
     opacity: 0.45;
-    background-image: url("/assets/images/landingscreen.jpeg");
+    background-image: url('/assets/images/landingscreen.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -194,6 +251,7 @@ footer {
     border-radius: 50%;
     align-items: center;
     justify-content: center;
+    margin: 30px;
 }
 
 .add-site img {
@@ -305,6 +363,7 @@ fieldset{
 /*adjusts the margins to format cleaner for larger screen dimensions*/
 @media (min-width: 900px) {
     .panel {
+        max-width: 960px;
         flex-direction: row;
     }
     .filter {
@@ -330,10 +389,13 @@ fieldset{
         width: 1500px;
     }
     main {
-        flex-direction: column;
+        flex-direction: row;
         margin: 30px 50px;
     }
-    .saved-sites {
-        flex-direction: row;
+    .add-site {
+        margin: 60px 0px 0px 30px;
+    }
+    .header {
+        margin-top: 400px;
     }
 }

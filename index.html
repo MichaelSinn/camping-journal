@@ -12,28 +12,33 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js'></script>
     <title>Camp JRNL</title>
+
     <!-- added the Bulma link, to add the Bulma library -->
+
+    <!-- Connected the Bulma libraryto codebase through the links above -->
+
 </head>
 
 <body>
-<!--creates the header of the page (navbar, bg image)-->
-<!-- added style to the background of the to card -->
+<!-- Header of the page (navbar, bg image) -->
+<!-- Bulma styling included -->
 <header class='main-content '>
     <div class='card nav-card'>
         <nav class='card-footer message'>
-            <img src='./assets/images/camp-icon.png' class="img" alt='camp icon'>
+            <img src='/assets/images/camp-icon.png' class="img" alt='camp icon'>
             <a href='#map' style='text-decoration: none;' class='card-footer-item'>Search Campsites</a>
             <a href='#selected-sites' style='text-decoration: none;' class='card-footer-item'>View Saved Sites</a>
             <a href='#container' style='text-decoration: none;' class='card-footer-item'>Give Your Review</a>
         </nav>
     </div>
 
-    <!-- added style to the background of the 'header' class -->
     <section class='header'>
-        <!-- added a new class so I can edit the text -->
+        <!-- Span implimented to change design of words -->
         <h1>CAMP JRNL. <span>YOUR ONE STOP CAMPSITE FINDER</span></h1>
     </section>
 </header>
+
+<!-- Modal for adding a new site to database -->
 <div id='new-site-form' title='New campsite'>
     <p class='validateTips'>All form fields are required.</p>
 
@@ -52,40 +57,45 @@
         </fieldset>
     </form>
 </div>
+
 <!--main content-->
 <main>
-    <!--The view map, and filter data areas are contained within individual sections-->
+    <!-- The view map, and filter data areas are contained within individual sections -->
     <section id='container' class='panel'>
         <form class='filter'>
             <h2>Filter Campsites</h2>
             <label for="filter-weather">Weather</label>
             <input id='filter-weather' type='text' placeholder='Weather'/>
-            <button> find your Location here </button>
+            <button class="find"> Find your Location here </button>
             <label for="filter-location">Location</label>
             <input id='filter-location' type='text' placeholder='Distance'/>
             <button id='submit-btn' class='view-button'>Submit</button>
         </form>
 
+        <!-- Map is connected and displayed using the Google Maps API -->
         <article class='filterMap' id='map'>
             
         </article>
     </section>
-    <!--creates section that contains the users saved sites-->
+
+    <!-- Contains the users saved sites, populated through JS function -->
     <section id='selected-sites' class='saved-sites'>
         <div class="site-container" id="site-container">
-
-        </div>
-        <div class='add-site' id='add-site'>
-            <img src='assets/images/plus-icon.png' alt='plus-icon'>
         </div>
     </section>
+
+    <!-- Add-site button, functions through JS -->
+    <div class='add-site' id='add-site'>
+        <img src='assets/images/plus-icon.png' alt='plus-icon'>
+    </div>
 </main>
 
-<!--this creates the footer of the webpage-->
+<!-- Creates the footer of the webpage -->
 <footer>
     <h2>@2022 Camp JRNL</h2>
 </footer>
 
+<!--Links javascript files to the codebase -->
 <script src='https://polyfill.io/v3/polyfill.min.js?features=default'></script>
 <script src='./assets/js/notApiKey.js'></script>
 <script src='./assets/js/main.js'></script>

@@ -34,7 +34,7 @@
 
     <section class='header'>
         <!-- Span implimented to change design of words -->
-        <h1>CAMP JRNL. <span>YOUR ONE STOP CAMPSITE FINDER</span></h1>
+        <h1>CAMP JRNL. <span>YOUR ONE STOP CAMPSITE MANAGER</span></h1>
         <button id='submit-btn' class='start-button'>Get Started Now</button>
     </section>
 </header>
@@ -42,11 +42,9 @@
 <!-- Modal for adding a new site to database -->
 <div id='new-site-form' title='New campsite'>
     <p class='validateTips'>All form fields are required.</p>
-
     <form>
         <fieldset>
-            <!-- added pleas to the name class so the input can fit properly  -->
-            <label for='name'>Name please </label>
+            <label for='name'>Name</label>
             <input type='text' name='name' id='name' value='' class='text ui-widget-content ui-corner-all'>
             <label for='lat'>Latitude coordinate</label>
             <input type='text' name='lat' id='lat' value='' class='text ui-widget-content ui-corner-all'>
@@ -59,6 +57,31 @@
     </form>
 </div>
 
+<div id='edit-site-form' title='Campsite'>
+    <form>
+        <fieldset>
+            <input type="hidden" id="hidden-id">
+            <label for='edit-name'>Name</label>
+            <input type='text' name='name' id='edit-name' value='' class='text ui-widget-content ui-corner-all'>
+            <label for='season'>Season</label>
+            <select type='text' name='season' id='season' class='text ui-widget-content ui-corner-all'>
+                <option>All Season</option>
+                <option>Three Season</option>
+                <option>Winter</option>
+                <option>Summer</option>
+            </select>
+            <label for='rating'>Rating</label>
+            <input type='text' name='rating' id='rating' value='' class='text ui-widget-content ui-corner-all'>
+            <!-- Allow form submission with keyboard without duplicating the dialog button -->
+            <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
+        </fieldset>
+    </form>
+    <!-- Add the weather here -->
+    <section>
+        <h3>Weather Forecast</h3>
+        <div id="weatherForecast"></div>
+    </section>
+</div>
 <!--main content-->
 <main>
     <!-- The view map, and filter data areas are contained within individual sections -->
@@ -70,7 +93,7 @@
             <button class="find"> Find your Location here </button>
             <label for="filter-location">Location</label>
             <input id='filter-location' type='text' placeholder='Distance'/>
-            <button id='submit-btn' class='view-button'>Submit</button>
+            <button id='search-btn' class='view-button'>Submit</button>
         </form>
 
         <!-- Map is connected and displayed using the Google Maps API -->

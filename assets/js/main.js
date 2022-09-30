@@ -213,10 +213,22 @@ function addSite(siteName, siteID) {
                      <button id="view-site-${siteID}">View Site</button> </div>`);
     sitesForm.append(newSiteEl);
     $(`#view-site-${siteID}`).button().on("click", function(){
-        editSiteForm.find("input#edit-name").val(siteName);
+        let formSiteName = getCampsiteById(siteID).name;
+        editSiteForm.find("input#edit-name").val(formSiteName);
         editSiteForm.find("input#hidden-id").val(siteID);
         editSiteDialog.dialog('open');
     });
+}
+
+function getCampsiteById(id){
+    campsites = JSON.parse(localStorage.getItem("campsites"));
+    let result = null;
+    campsites.forEach(e =>{
+        if (e.id === id){
+            result = e;
+        }
+    });
+    return result;
 }
 
 document.addEventListener('DOMContentLoaded', () => {

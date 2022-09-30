@@ -7,7 +7,7 @@ let script = document.createElement('script');
 script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
 script.async = true;
 
-let newSiteDialog, editSiteDialog, form, form1,
+let newSiteDialog, editSiteDialog, saveForm, editForm,
     siteName = $('#name'),
     latitude = $('#lat'),
     longitude = $('#lng'),
@@ -17,6 +17,90 @@ let campsites = JSON.parse(localStorage.getItem('campsites'));
 if (!campsites) {
     campsites = [];
     localStorage.setItem('campsites', JSON.stringify(campsites));
+}
+
+// Adding a modal for adding a campsite
+$(function () {
+    newSiteDialog = newSiteForm.dialog({
+        autoOpen: false,
+        height: 400,
+        width: 350,
+        modal: true,
+        buttons: {
+            'Add Campsite': addCampsite,
+            Cancel: function () {
+                newSiteDialog.dialog('close');
+            }
+        },
+        close: function () {
+            saveForm[0].reset();
+            allFields.removeClass('ui-state-error');
+        }
+    });
+    saveForm = newSiteDialog.find('form').on('submit', function (event) {
+        event.preventDefault();
+        addCampsite();
+    });
+
+    $('#add-site').button().on('click', function () {
+        newSiteDialog.dialog('open');
+    });
+});
+
+// Adding a modal for editing a campsite
+$(function(){
+    editSiteDialog = editSiteForm.dialog({
+        autoOpen: false,
+        height: 700,
+        width: 550,
+        modal: true,
+        buttons: {
+            'Save': saveSite, // Replace with function that should be called on save
+            Cancel: function () {
+                editSiteDialog.dialog('close');
+            }
+        },
+        close: function () {
+            editForm[0].reset();
+            allFields.removeClass('ui-state-error');
+        }
+    });
+    editForm = editSiteDialog.find('form').on('submit', function (event) {
+        event.preventDefault();
+        saveSite();
+    });
+});
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 43.650, lng: -79.386},
+        zoom: 8,
+        disableDefaultUI: true
+    });
+
+    campsites.forEach(e => {
+        const marker = new google.maps.Marker({
+            position: {lat: e.lat, lng: e.lng},
+            map: map,
+            icon: './assets/images/campsite.png',
+            title: e.name
+        });
+
+        marker.addListener("click", () =>{
+            map.setCenter(marker.getPosition());
+            editSiteDialog.dialog("open");
+        });
+
+        addSite(e.name, e.id);
+    });
+
+    map.addListener('click', (e) => {
+        console.log(e.latLng.lat(), e.latLng.lng());
+        $('#lat').val(e.latLng.lat());
+        $('#lng').val(e.latLng.lng());
+
+        newSiteDialog.dialog('open');
+    });
 }
 
 // UUID function from https://www.w3resource.com/javascript-exercises/javascript-math-exercise-23.php
@@ -64,58 +148,6 @@ function addCampsite() {
     return true;
 }
 
-// Adding a modal for adding a campsite
-$(function () {
-    newSiteDialog = newSiteForm.dialog({
-        autoOpen: false,
-        height: 400,
-        width: 350,
-        modal: true,
-        buttons: {
-            'Add Campsite': addCampsite,
-            Cancel: function () {
-                newSiteDialog.dialog('close');
-            }
-        },
-        close: function () {
-            form[0].reset();
-            allFields.removeClass('ui-state-error');
-        }
-    });
-    form = newSiteDialog.find('form').on('submit', function (event) {
-        event.preventDefault();
-        addCampsite();
-    });
-
-    $('#add-site').button().on('click', function () {
-        newSiteDialog.dialog('open');
-    });
-});
-
-// Adding a modal for editing a campsite
-$(function(){
-    editSiteDialog = editSiteForm.dialog({
-        autoOpen: false,
-        height: 700,
-        width: 550,
-        modal: true,
-        buttons: {
-            'Save': saveSite, // Replace with function that should be called on save
-            Cancel: function () {
-                editSiteDialog.dialog('close');
-            }
-        },
-        close: function () {
-            form1[0].reset();
-            allFields.removeClass('ui-state-error');
-        }
-    });
-    form1 = editSiteDialog.find('form').on('submit', function (event) {
-        event.preventDefault();
-        saveSite();
-    });
-});
-
 function saveSite(){
     let editSiteId = editSiteForm.find("input#hidden-id").val();
     let editCard = $(`#${editSiteId}`);
@@ -129,31 +161,6 @@ function saveSite(){
     editCard.find("h3").text(editNameValue);
     localStorage.setItem("campsites", JSON.stringify(campsites));
     editSiteDialog.dialog("close");
-}
-
-function initMap() {
-    map = new google.maps.Map(document.getElementById('map'), {
-        center: {lat: 43.650, lng: -79.386},
-        zoom: 8
-    });
-    campsites.forEach(e => {
-        const marker = new google.maps.Marker({
-            position: {lat: e.lat, lng: e.lng},
-            map: map,
-            icon: './assets/images/campsite.png',
-            title: e.name
-        });
-
-        addSite(e.name, e.id);
-    });
-
-    map.addListener('click', (e) => {
-        console.log(e.latLng.lat(), e.latLng.lng());
-        $('#lat').val(e.latLng.lat());
-        $('#lng').val(e.latLng.lng());
-
-        newSiteDialog.dialog('open');
-    });
 }
 
 function getWeather(lat, lng) {
@@ -198,10 +205,6 @@ function getWeather(lat, lng) {
     });
 }
 
-window.initMap = initMap;
-
-document.head.appendChild(script);
-
 function addSite(siteName, siteID) {
     const newSiteEl = $('<div>');
     newSiteEl.addClass("site");
@@ -231,10 +234,6 @@ function getCampsiteById(id){
     return result;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    let savedSite = localStorage.getItem('saved-sites');
+window.initMap = initMap;
 
-    if(savedSite) {
-        document.querySelector('#saved-sites').prepend(savedSite);
-    }
-})
+document.head.appendChild(script);

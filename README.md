@@ -2,7 +2,7 @@
 
 ## Overview
 
-As technology continues to advance, travelers of all kinds have become increasingly more dependent on travel related websites to gain valuable information regarding their desired destination. Campers in specific rely on this data to evaluate which campsite are most suitable for themselves, and those they are camping with. Camp JRNL gives prospective campers the capability to retrieve this crucial information, allowing them to make informed decisions. Furthermore, Camp JRNL allows users to submit information on campsites they have reviewed, ultimately providing more data to new users planning their next trip! Camp JRNL serves as a reference for current and prospective campers.
+As technology continues to advance, travelers of all kinds have become increasingly more dependent on travel related websites to gain valuable information regarding their desired destination. Campers in specific rely on this data to evaluate which campsite is most suitable for themselves, and those they are camping with. Camp JRNL gives prospective campers the capability to retrieve this crucial information, allowing them to make informed decisions. Furthermore, Camp JRNL allows users to submit information on campsites they have reviewed, ultimately providing more data to new users planning their next trip! Camp JRNL serves as a reference for current and prospective campers.
 
 ## Features
 
@@ -28,15 +28,16 @@ Link to [Live Website](https://michaelsinn.github.io/camping-journal/)
 
 ## Credit
 
-###Michael Sinn
+### Michael Sinn
 Link to Michael's [Github Profile](https://github.com/MichaelSinn)
 
-###Trishane Wijeyawickrema
+### Trishane Wijeyawickrema
 Link to Trishane's [Github Profile](https://github.com/Trishaneww)
 
-###Imanuel Meshikhi
+### Imanuel Meshikhi
 Link to Imanuel's [Github Profile](https://github.com/Imanuel3)
 
 ## Liscence
 
 N/A
+

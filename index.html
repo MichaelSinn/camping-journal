@@ -21,7 +21,7 @@
 <header class='main-content '>
     <div class='card nav-card'>
         <nav class='card-footer message'>
-            <img src='/assets/images/camp-icon.png' alt='camp icon'>
+            <img src='./assets/images/camp-icon.png' class="img" alt='camp icon'>
             <a href='#map' style='text-decoration: none;' class='card-footer-item'>Search Campsites</a>
             <a href='#selected-sites' style='text-decoration: none;' class='card-footer-item'>View Saved Sites</a>
             <a href='#container' style='text-decoration: none;' class='card-footer-item'>Give Your Review</a>
@@ -60,13 +60,14 @@
             <h2>Filter Campsites</h2>
             <label for="filter-weather">Weather</label>
             <input id='filter-weather' type='text' placeholder='Weather'/>
+            <button> find your Location here </button>
             <label for="filter-location">Location</label>
             <input id='filter-location' type='text' placeholder='Distance'/>
             <button id='submit-btn' class='view-button'>Submit</button>
         </form>
 
         <article class='filterMap' id='map'>
-
+            
         </article>
     </section>
     <!--creates section that contains the users saved sites-->

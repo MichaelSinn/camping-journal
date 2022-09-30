@@ -1,5 +1,5 @@
 const submitBtn = document.querySelector('#submit-btn')
-const sitesForm = document.querySelector('.saved-sites')
+const sitesForm = $("#site-container");
 const newSiteForm = $('#new-site-form');
 
 let map;
@@ -45,7 +45,7 @@ function addCampsite() {
     marker.setMap(map);
     localStorage.setItem('campsites', JSON.stringify(campsites));
     dialog.dialog('close');
-    addSite();
+    addSite(newSite.name);
     return true;
 }
 
@@ -90,6 +90,8 @@ function initMap() {
             icon: './assets/images/campsite.png',
             title: e.name
         });
+
+        addSite(e.name);
     });
 
     map.addListener('click', (e) => {
@@ -163,17 +165,15 @@ window.initMap = initMap;
 document.head.appendChild(script);
 
 
-function addSite() {
-    // siteName = site.value;
-    const img = document.createElement('img')
-    img.src = '/assets/images/camping.png';
-    const siteName = 'New Site'
-    const newSite = document.createElement('div');
-    newSite.prepend(img);
-    newSite.textContent = siteName;
-    newSite.classList.add('site');
-    sitesForm.prepend(newSite);
-    localStorage.setItem('saved-sites', newSite);
+function addSite(siteName) {
+    const newSite = $('<div>');
+    newSite.addClass("site");
+    newSite.html(`<img src='assets/images/camping.png' alt='image-icon'/>
+                     <div class='site-body'> 
+                     <h3>${siteName}</h3> 
+                     <p>Description of site goes here</p> 
+                     <button>View Site</button> </div>`);
+    sitesForm.append(newSite);
 }
 
 submitBtn.addEventListener('click', addSite)

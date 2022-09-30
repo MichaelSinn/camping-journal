@@ -21,6 +21,11 @@ main {
     margin: auto;
 }
 
+h3 {
+    font-size: 1.5em;
+    color: black;
+}
+
 /*formats the letters inside the <span></span> that are nested inside the h1*/
 .header {
     color: black;
@@ -68,6 +73,7 @@ footer {
 .filter, .filterMap{
     display:flex;
     border-bottom: 1px solid #ffbcb1;
+    border-radius: 6%;
     align-items: center;
     justify-content: space-evenly;
     transition: transform 200ms ease-in-out;
@@ -76,9 +82,9 @@ footer {
 /*formats the buttons in the webpage*/
 .view-button {
     background-color: white;
-    border: 1px solid #ffbcb1;
+    border: 0.5px solid rgb(85, 79, 79);
     border-radius: 10px;
-    color: #c18277;
+    color: #918887;
     display: inline-block;
     padding: 15px 35px;
     text-decoration: none;
@@ -100,24 +106,59 @@ footer {
     width:80%;
 }
 
+.site-container{
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+}
 
 .site {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    height: 150px;
-    width: 150px;
     background-color: white;
-    transition: transform 200ms ease-in-out;
-    
     /* added these to make it look smoother */
     /* feel free to remove them if you want  */
     border-top-left-radius: 200px;
     border-top-right-radius: 200px;
     border: 3px solid #f0b59aaf;
+    transition: transform 200ms;
+    margin-right: 15px;
+    border-radius: 5px;
+    max-width: 175px;
+}
+
+.site-body{
+    width: 100%;
+    height: 100%;
+    background-color: #d1fffd;
+    padding: 10px;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.site-body p{
+    line-height: 1.15em;
+    margin-bottom: 5px;
+}
+
+.site-body button{
+    border-radius: 5px;
+    border: none;
+    background-color: #198f68;
+    padding: 8px 20px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.site-body button:hover{
+    background-color: #117a57;
+}
+
+.site img{
+    height: 100px;
+    width: 100px;
 }
 
 
@@ -141,7 +182,7 @@ footer {
     left: 0;
     bottom: 0;
     right: 0;
-    opacity: 0.3;
+    opacity: 0.45;
     background-image: url('/assets/images/landingscreen.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -198,6 +239,7 @@ fieldset{
 /*changes background color of buttons when hovering over them*/
 .view-button:hover, .view-button:focus {
     background-color: #ffbcb1;
+    color:white;
     cursor: pointer;
 }
 
@@ -206,15 +248,14 @@ fieldset{
 .filter:hover, .filterMap:hover {
     border: 3px solid #ffbcb1;
     transform: translateY(-0.25em);
-
 }
 
-.site:hover{
+.site:hover {
     border:3px solid #ffbcb1;
     transform: scale(1.2,1.2)
 }
 
-.add-site:hover{
+.add-site:hover, .add-site:focus{
     border:3px solid #ffbcb1;
 }
 
@@ -277,11 +318,11 @@ fieldset{
         flex-direction: row;
     }
     .filter {
-        border: 1px solid #ffbcb1;
-        padding: 25px 50px;
-        text-align: center;
-        align-items: center;
         display: flex;
+        flex-direction: column;
+        border: 1px solid #ffbcb1;
+        align-items: center;
+        padding: 10px 20px;
         flex-wrap:wrap;
         margin-right: 10px;
     }
@@ -303,6 +344,10 @@ fieldset{
         margin: 30px 50px;
     }
     .saved-sites {
+        flex-direction: row;
+    }
+    .site-container{
+        display: flex;
         flex-direction: row;
     }
 }

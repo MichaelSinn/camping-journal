@@ -107,30 +107,25 @@ footer {
 }
 
 .site-container{
-    display: flex;
-    flex-direction: column;
     margin: 10px;
+    display: flex;
+    flex-direction: row;
 }
 
 .site {
-    display: flex;
-    flex-direction: column;
     align-items: center;
     background-color: white;
     /* added these to make it look smoother */
     /* feel free to remove them if you want  */
-    border-top-left-radius: 200px;
-    border-top-right-radius: 200px;
     border: 3px solid #f0b59aaf;
     transition: transform 200ms;
     margin-right: 15px;
     border-radius: 5px;
-    max-width: 175px;
+    width: 175px;
 }
 
 .site-body{
     width: 100%;
-    height: 100%;
     background-color: #d1fffd;
     padding: 10px;
     border-bottom-left-radius: inherit;
@@ -211,7 +206,7 @@ footer {
 }
 /* added border so it will look nice */
 #new-site-form{
-  outline: solid 1px rgba(222, 176, 233, 0.452);
+  outline: solid 1px rgba(150, 155, 150, 0.452);
   border-radius: 10px 10px 10px 10px; 
 }
 /* added margin so it will fit properly  */
@@ -225,7 +220,7 @@ fieldset{
   display: flex; 
   flex-wrap: wrap;
   justify-content: space-around;
-  outline: solid 1px rgba(228, 120, 214, 0.452);
+  outline: solid 1px rgba(11, 59, 11, 0.452);
   border-radius: 10px 10px 10px 10px;   
 }
 /* added space between the top and bottom so it will look nicer  */
@@ -233,7 +228,7 @@ fieldset{
   margin-bottom: 10px;
   margin-top: 10px;
   width: calc(75%/1);
-  outline: solid 1px rgba(223, 191, 233, 0.24);
+  outline: solid 1px rgba(11, 59, 11, 0.452);
 }
 
 /*changes background color of buttons when hovering over them*/
@@ -252,33 +247,28 @@ fieldset{
 
 .site:hover {
     border:3px solid #ffbcb1;
-    transform: scale(1.2,1.2)
+    transform: scale(1.05,1.05);
 }
 
 .add-site:hover, .add-site:focus{
     border:3px solid #ffbcb1;
 }
 
-
 /* added a scroll wheel to the campsite */
 #selected-sites{
-    padding-left: 10px;
-    padding-bottom: 50px;
-    padding-top: 50px;
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 21%;
+    /*grid-auto-columns: 21%;*/
     overflow-x: auto;
     background-color: #e1c3e725;
     border: 3px solid #f5b8b8af;
-    border-radius: 10px 10px 10px 10px;
+    border-radius: 10px;
 }
 
 /* styled the window scrollbar */
 ::-webkit-scrollbar{
     width: .9em;
 }
-
 
 ::-webkit-scrollbar-track{
   background-color: #8d706c;
@@ -290,7 +280,7 @@ fieldset{
     background: linear-gradient(rgb(243, 161, 161), rgba(206, 17, 17, 0.555));
 }
 
-/* styled the scrollbar of campsits */
+/* styled the scrollbar of campsites */
 #selected-sites::-webkit-scrollbar{
     width: .7em;
 }
@@ -344,10 +334,6 @@ fieldset{
         margin: 30px 50px;
     }
     .saved-sites {
-        flex-direction: row;
-    }
-    .site-container{
-        display: flex;
         flex-direction: row;
     }
 }

@@ -152,7 +152,9 @@ footer {
     align-items: center;
     justify-content: space-between;
     width: 73%;
+    height: 320px;
     margin-top: 60px;
+    margin-bottom: 20px;
 }
 
 .site-container{
@@ -207,7 +209,7 @@ footer {
 .add-site{
     display: flex;
     background-color: whitesmoke;
-    border:3px solid black;
+    border:3px solid #f5b8b8af;;
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -217,7 +219,7 @@ footer {
 }
 
 .add-site img {
-    width:60%;
+    width:90%;
 }
 
 /* Formats map */
@@ -330,6 +332,21 @@ fieldset{
     background-color: rgba(145, 56, 56, 0.836);
    
 }
+
+#search-sites {
+    margin-top: 60px;
+    width: 275px;
+    height: 30px;
+    background-color: #e1c3e725;
+    border: 3px solid #f5b8b8af;
+    color: #918887;
+    text-align: center;
+}
+
+#search-sites:hover, #search-sites:focus {
+    background-color: whitesmoke;
+    border: 3px solid #ffbcb1;
+}
 /*----------------------------------------------------- Media Query --------------------------------------------------*/
 /* Once the users screen is 900px or greater, this code will run */
 /* Changes the flex-direction of the panel class to rows from columns */
@@ -370,5 +387,13 @@ fieldset{
     }
     .header {
         margin-top: 400px;
+    }
+    #search-sites {
+        width: 1200px;
+        height: 40px;
+    }
+    .saved-sites {
+        margin-top: 20px;
+        margin-left: 135px;
     }
 }

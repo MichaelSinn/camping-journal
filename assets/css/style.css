@@ -218,8 +218,8 @@ footer {
 /* made the content fit properly in the middle */
 fieldset{
   display: flex; 
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
   outline: solid 1px rgba(11, 59, 11, 0.452);
   border-radius: 10px 10px 10px 10px;   
 }

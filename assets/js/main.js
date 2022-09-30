@@ -1,6 +1,7 @@
 const submitBtn = document.querySelector('#submit-btn')
 const sitesForm = $("#site-container");
 const newSiteForm = $('#new-site-form');
+const editSiteForm = $("#edit-site-form");
 
 let map;
 let script = document.createElement('script');
@@ -51,8 +52,7 @@ function addCampsite() {
 
 // Adding a modal for adding a campsite
 $(function () {
-
-    dialog = newSiteForm.dialog({
+    let dialog = newSiteForm.dialog({
         autoOpen: false,
         height: 400,
         width: 350,
@@ -172,8 +172,31 @@ function addSite(siteName) {
                      <div class='site-body'> 
                      <h3>${siteName}</h3> 
                      <p>Description of site goes here</p> 
-                     <button>View Site</button> </div>`);
+                     <button id="view-site">View Site</button> </div>`);
     sitesForm.append(newSite);
+    $("#view-site").button().on("click", function(){
+        let dialog = editSiteForm.dialog({
+            autoOpen: false,
+            height: 700,
+            width: 550,
+            modal: true,
+            buttons: {
+                'Save': null, // Replace with function that should be called on save
+                Cancel: function () {
+                    dialog.dialog('close');
+                }
+            },
+            close: function () {
+                form[0].reset();
+                allFields.removeClass('ui-state-error');
+            }
+        });
+        form = dialog.find('form').on('submit', function (event) {
+            event.preventDefault();
+            // addCampsite(); // Replace with function that should be called on save
+        });
+        dialog.dialog('open');
+    });
 }
 
 submitBtn.addEventListener('click', addSite)

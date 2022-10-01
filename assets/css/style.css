@@ -123,14 +123,10 @@ nav img {
     flex-wrap: wrap;
 }
 
-.ratings, .seasons {
+.weather, .seasons {
     display:flex;
     flex-direction: column;
     font-size: 12px;
-}
-
-#weather, #location, #rating, #season {
-    margin-top: 15px;
 }
 
 #weatherValue, #locationValue {

@@ -84,39 +84,39 @@
     <section id='container' class='panel'>
         <form class='filter'>
             <h2>Filter Campsites</h2>
-            <label for="filter-weather" id="weather">Weather</label>
-            <input id='filter-weather' type='range' min="-40" max="40" oninput="weatherValue.innerText = this.value"/>
-            <p id="weatherValue">0</p>
+            <label for="filter-weather" id="weather">Rating</label>
+            <input id='filter-weather' type='range' min="1" max="5" oninput="ratingValue.innerText = this.value"/>
+            <p id="ratingValue">0</p>
             <label for="filter-location" id="location">Location</label>
-            <input id='filter-location' type='range' min="0" max="5500" step="50" oninput="locationValue.innerText = this.value" />
+            <input id='filter-location' type='range' min="0" max="600" step="50" oninput="locationValue.innerText = this.value" />
             <p id="locationValue">0</p>
 
-            <legend id="season">Season</legend>
+            <legend>Season</legend>
             <div class="seasons">
-                <input id="filter-season" name="season" type="radio"  value='Summer'/>
-                <label for="filter-season">Summer</label>
-                <input id="filter-season" name="season" type="radio"  value='Fall'/>
-                <label for="filter-season">Fall</label>
-                <input id="filter-season" name="season" type="radio"  value='Winter'/>
-                <label for="filter-season">Winter</label>
-                <input id="filter-season" name="season" type="radio"  value='Spring'/>
-                <label for="filter-season">Spring</label>
+                <input id="summer" name="summer" type="radio"  value='Summer'/>
+                <label for="summer">Summer</label>
+                <input id="fall" name="fall" type="radio"  value='Fall'/>
+                <label for="fall">Fall</label>
+                <input id="winter" name="winter" type="radio"  value='Winter'/>
+                <label for="winter">Winter</label>
+                <input id="spring" name="spring" type="radio"  value='Spring'/>
+                <label for="spring">Spring</label>
             </div>
           
-            <legend id="rating">Rating</legend>
+            <legend>Weather</legend>
             <div class="ratings">
-                <input id="filter-season" name="rating" type="radio"  value='1 Star'/>
-                <label for="filter-season">1 Star</label>
-                <input id="filter-season" name="rating" type="radio"  value='2 Star'/>
-                <label for="filter-season">2 Star</label>
-                <input id="filter-season" name="rating" type="radio"  value='3 Star'/>
-                <label for="filter-season">3 Star</label>
-                <input id="filter-season" name="rating" type="radio"  value='4 Star'/>
-                <label for="filter-season">4 Star</label>
-                <input id="filter-season" name="rating" type="radio"  value='5 Star'/>
-                <label for="filter-season">5 Star</label>
-                <button id='search-btn' class='submit-button'>Submit</button>
+                <input id="filter-season" name="rating" type="radio"  value='Clear'/>
+                <label for="filter-season">Clear</label>
+                <input id="filter-season" name="rating" type="radio"  value='Light precipitation'/>
+                <label for="filter-season">Light precipitation</label>
+                <input id="filter-season" name="rating" type="radio"  value='Moderate precipitation'/>
+                <label for="filter-season">Moderate precipitation</label>
+                <input id="filter-season" name="rating" type="radio"  value='Heavy precipitation'/>
+                <label for="filter-season">Heavy precipitation</label>
+                <input id="filter-season" name="rating" type="radio"  value='Any Weather'/>
+                <label for="filter-season">Any Weather</label>
             </div>
+            <button id='search-btn' class='submit-button'>Submit</button>
         </form>
 
         <!-- Map is connected and displayed using the Google Maps API -->

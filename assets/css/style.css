@@ -3,6 +3,7 @@
 html {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+    scroll-behavior: smooth;
 }
 
 /* Body will contain below background color */
@@ -98,7 +99,7 @@ nav img {
     background-color: whitesmoke;
     border-radius: 10px;
     padding: 15px 25px;
-    max-width: 200px;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -108,9 +109,7 @@ nav img {
 }
 
 /* Styles and formats the two sections within the panel container */
-.filter, .filterMap{
-    display:flex;
-    border-bottom: 1px solid #ffbcb1;
+.filter, .filterMap {
     border-radius: 6%;
     align-items: center;
     justify-content: space-evenly;
@@ -119,7 +118,7 @@ nav img {
 
 .filter {
     accent-color: #ffbcb1;
-    flex-direction: row;
+    flex-direction: column;
     flex-wrap: wrap;
 }
 
@@ -129,8 +128,18 @@ nav img {
     font-size: 12px;
 }
 
+#weather, #location, #rating, #season {
+    margin-top: 15px;
+    font-size: 17px;
+}
+
 #weatherValue, #locationValue {
     font-size: 14px;
+}
+
+#filter-campsites {
+    margin-bottom: 20px;
+    font-size: 20px;
 }
 
 input::placeholder {
@@ -150,6 +159,7 @@ footer {
 /*---------------------------------------------------- Buttons --------------------------------------------------*/
 /* Styles the buttons used in the application, adds smooth transition when hovering over*/
 .submit-button, .start-button {
+    position:relative;
     background-color: whitesmoke;
     border: 0.5px solid rgb(85, 79, 79);
     border-radius: 10px;
@@ -162,10 +172,6 @@ footer {
 }
  
 .start-button {
-    position: relative;
-    background-color: whitesmoke;
-    border: 0.5px solid black;
-    color: #918887;
     font-weight: bolder;
 }
 
@@ -288,10 +294,12 @@ fieldset{
     border: 0.5px solid rgb(85, 79, 79)
 }
 
-
+#filter-weather {
+    margin-left:3px;
+}
 /*----------------------------------------- Button/TextBox Transitions ------------------------------------ */
 /* Changes background color of buttons when hovering over them */
-.submit-button:hover, .submit-button:focus {
+.submit-button:hover, .submit-button:focus, .start-button:hover, .start-button:focus {
     background-color: whitesmoke;
     border: 2px solid #ffbcb1;
     cursor: pointer;
@@ -299,7 +307,7 @@ fieldset{
 
 .site:hover {
     border:3px solid #ffbcb1;
-    transform: scale(1.05,1.05);
+    transform: scale(1.1,1.1);
 }
 
 .add-site:hover, .add-site:focus{
@@ -318,7 +326,6 @@ fieldset{
     border: none;
     outline: 2px solid #ffbcb1;
 }
-
 
 /*------------------------------------------------- Scroll Wheels ----------------------------------------------*/
 #selected-sites{
@@ -424,5 +431,8 @@ fieldset{
     .saved-sites {
         margin-top: 20px;
         margin-left: 135px;
+    }
+    #filter-campsites {
+        margin-bottom: 0px;
     }
 }

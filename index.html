@@ -83,11 +83,11 @@
     <!-- The view map, and filter data areas are contained within individual sections -->
     <section id='container' class='panel'>
         <form class='filter'>
-            <h2>Filter Campsites</h2>
-            <label for="filter-weather" id="weather">Weather</label>
+            <h2 id='filter-campsites'>Filter Campsites</h2>
+            <label for="filter-weather" id="weather">Weather (°C)</label>
             <input id='filter-weather' type='range' min="-40" max="40" oninput="weatherValue.innerText = this.value"/>
             <p id="weatherValue">0</p>
-            <label for="filter-location" id="location">Location</label>
+            <label for="filter-location" id="location">Location (KM)</label>
             <input id='filter-location' type='range' min="0" max="5500" step="50" oninput="locationValue.innerText = this.value" />
             <p id="locationValue">0</p>
 
@@ -105,16 +105,16 @@
           
             <legend id="rating">Rating</legend>
             <div class="ratings">
-                <input id="filter-season" name="rating" type="radio"  value='1 Star'/>
-                <label for="filter-season">1 Star</label>
-                <input id="filter-season" name="rating" type="radio"  value='2 Star'/>
-                <label for="filter-season">2 Star</label>
-                <input id="filter-season" name="rating" type="radio"  value='3 Star'/>
-                <label for="filter-season">3 Star</label>
-                <input id="filter-season" name="rating" type="radio"  value='4 Star'/>
-                <label for="filter-season">4 Star</label>
-                <input id="filter-season" name="rating" type="radio"  value='5 Star'/>
-                <label for="filter-season">5 Star</label>
+                <input id="filter-rating" name="rating" type="radio"  value='1 Star'/>
+                <label for="filter-rating">1 Star</label>
+                <input id="filter-rating" name="rating" type="radio"  value='2 Star'/>
+                <label for="filter-rating">2 Star</label>
+                <input id="filter-rating" name="rating" type="radio"  value='3 Star'/>
+                <label for="filter-rating">3 Star</label>
+                <input id="filter-rating" name="rating" type="radio"  value='4 Star'/>
+                <label for="filter-rating">4 Star</label>
+                <input id="filter-rating" name="rating" type="radio"  value='5 Star'/>
+                <label for="filter-rating">5 Star</label>
                 <button id='search-btn' class='submit-button'>Submit</button>
             </div>
         </form>

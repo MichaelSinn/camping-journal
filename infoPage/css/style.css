@@ -1,0 +1,98 @@
+body{
+    background-image: url("/infoPage/imgs/FamilyCamping-2021-GettyImages-948512452-2.webp");
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+.head, .top-head, .enjoy, .howTo, .back{
+    font-family: 'Courier New', Courier, monospace;  
+    color:rgb(223, 160, 108) ;
+    animation: top-head 1s ease-in-out infinite alternate;
+}
+.head{
+    margin-top: 50px;
+    font-size: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pTwo{
+    font-size: 40px;
+    margin-top: 50px;
+    color: #ffffff;
+    text-align: center;
+}
+.pOne{
+    color: rgb(255, 255, 255);
+    font-size: 25px;
+    margin-top: 100px;
+    text-align: center;
+}
+
+
+@-webkit-keyframes top-head {
+    from {
+      text-shadow: 0 0 5px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #fa218d, 0 0 70px #f82b92;
+    }
+    
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #d6bdca, 0 0 40px #f187bc, 0 0 50px #f878b8ab, 0 0 60px #fd6bb493, 0 0 70px #ff5cade0, 0 0 80px #fc58aa;
+    }
+  }
+.mide-info{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.howTo, .enjoy, .back{
+    padding: 30px;
+    /* margin: 0px 50px; */
+    color: #fff;
+    background-color: #92858577;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px 20px 20px 20px;
+}
+
+h3{
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+p{
+    margin-top: 10px;
+}
+
+.five{
+    width: 150px;
+    height: 65px;
+}
+ .last-info{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+   
+ }
+ #top-last{
+    font-size: 35px;
+ }
+
+ #bottom-last{
+    margin-top: 20px;
+    font-size: 25px;
+ }
+
+ .back{
+    background-color: #e60073;
+    padding: 10px;
+    color: black;
+ }
+.back:hover{
+    cursor: pointer;
+}
+ .go-back{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+ }

@@ -267,8 +267,5 @@ function getCampsiteById(id){
 }
 
 window.initMap = initMap;
-
-
-
 document.head.appendChild(script);
 

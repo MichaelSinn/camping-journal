@@ -49,7 +49,7 @@ h3 {
 }
 
 /*--------------------------------------------- Landing Page --------------------------------------------*/
-/* Creates transparent background over the background image and displays viewheight of 100 to user */
+/* Creates transparent background over the background image and displays view height of 100 to user */
 .main-content {
     display: flex;
     flex-direction: column;
@@ -62,7 +62,7 @@ h3 {
     font-weight: bolder;
   }
 
-/* The image lnked below is displayed as the background image */
+/* The image linked below is displayed as the background image */
 .main-content::before {
     content: '';
     position: absolute;
@@ -84,7 +84,7 @@ nav img {
     width: 2%;
 }
 
-/* Navbars opaciy level */
+/* Navbar's opacity level */
 .card {
     position: relative;
     color: black;
@@ -93,7 +93,7 @@ nav img {
 
 /* NavBars text opacity level */
 .card-footer {
-    margin: 0px 100px;
+    margin: 0 100px;
     opacity: 1;
     font-weight: bolder;
   
@@ -128,7 +128,7 @@ nav img {
     flex-wrap: wrap;
 }
 
-.ratings, .seasons {
+.seasons {
     display:flex;
     flex-direction: column;
     font-size: 12px;
@@ -139,13 +139,8 @@ nav img {
     font-size: 17px;
 }
 
-#weatherValue, #locationValue {
+#locationValue {
     font-size: 14px;
-}
-
-#filter-campsites {
-    margin-bottom: 20px;
-    font-size: 20px;
 }
 
 input::placeholder {
@@ -169,7 +164,7 @@ footer {
     position:relative;
 
     background-color: whitesmoke;
-    border: 0.5px solid rgb(85, 79, 79);
+    border: 1px solid rgb(85, 79, 79);
     border-radius: 10px;
     color: #918887;
     display: inline-block;
@@ -346,7 +341,7 @@ fieldset{
 /* Styles input boxes */
 #filter-weather, #filter-location {
     background-color: whitesmoke;
-    border: 0.5px solid rgb(85, 79, 79)
+    border: 1px solid rgb(85, 79, 79)
 }
 
 #filter-weather {
@@ -407,7 +402,7 @@ fieldset{
     background: linear-gradient(rgb(243, 161, 161), rgba(206, 17, 17, 0.555));
 }
 
-/* Styles the scrollbar undernearth the users saved sites*/
+/* Styles the scrollbar underneath the users saved sites*/
 #selected-sites::-webkit-scrollbar{
     width: .7em;
 }
@@ -486,8 +481,5 @@ fieldset{
     .saved-sites {
         margin-top: 20px;
         margin-left: 135px;
-    }
-    #filter-campsites {
-        margin-bottom: 0px;
     }
 }

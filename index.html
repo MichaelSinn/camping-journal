@@ -54,6 +54,7 @@
 </div>
 
 <div id='edit-site-form' title='Campsite'>
+    <h3>Details</h3>
     <form>
         <fieldset>
             <input type="hidden" id="hidden-id">
@@ -75,7 +76,11 @@
     <!-- Add the weather here --> 
     <section>
         <h3>Weather Forecast</h3>
-        <div id="weather-forecast"></div>
+        <div id="weather-forecast">
+            <img alt="weather-icon">
+            <p>Weather Description</p>
+            <p>Weather Warning</p>
+        </div>
     </section>
 </div>
 <!--main content-->
@@ -86,10 +91,10 @@
             <h2>Filter Campsites</h2>
             <label for="filter-weather" id="weather">Rating</label>
             <input id='filter-weather' type='range' min="1" max="5" oninput="ratingValue.innerText = this.value"/>
-            <p id="ratingValue">0</p>
+            <p id="ratingValue">3</p>
             <label for="filter-location" id="location">Location</label>
             <input id='filter-location' type='range' min="0" max="600" step="50" oninput="locationValue.innerText = this.value" />
-            <p id="locationValue">0</p>
+            <p id="locationValue">300</p>
 
             <legend>Season</legend>
             <div class="seasons">
@@ -105,16 +110,10 @@
           
             <legend>Weather</legend>
             <div class="ratings">
-                <input id="filter-season" name="rating" type="radio"  value='Clear'/>
-                <label for="filter-season">Clear</label>
-                <input id="filter-season" name="rating" type="radio"  value='Light precipitation'/>
-                <label for="filter-season">Light precipitation</label>
-                <input id="filter-season" name="rating" type="radio"  value='Moderate precipitation'/>
-                <label for="filter-season">Moderate precipitation</label>
-                <input id="filter-season" name="rating" type="radio"  value='Heavy precipitation'/>
-                <label for="filter-season">Heavy precipitation</label>
-                <input id="filter-season" name="rating" type="radio"  value='Any Weather'/>
-                <label for="filter-season">Any Weather</label>
+                <input id="clear" name="clear" type="radio"  value='clear'/>
+                <label for="clear">Clear</label>
+                <input id="any-weather" name="any-weather" type="radio"  value='any-weather'/>
+                <label for="any-weather">Any weather</label>
             </div>
             <button id='search-btn' class='submit-button'>Submit</button>
         </form>

@@ -52,8 +52,6 @@ $(function () {
 $(function(){
     editSiteDialog = editSiteForm.dialog({
         autoOpen: false,
-        height: 700,
-        width: 550,
         modal: true,
         buttons: {
             'Save': saveSite, // Replace with function that should be called on save
@@ -215,7 +213,6 @@ function getWeather(campsite) {
         if (dailyWeather.length > 5) dailyWeather.shift(); // If there is more than 5 days, remove the first day
         console.log(dailyWeather);
         let forecastSection = $("#weather-forecast");
-        forecastSection.html(``);
     });
 }
 

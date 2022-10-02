@@ -27,6 +27,10 @@ h3 {
     color: black;
 }
 
+
+
+/*formats the letters inside the <span></span> that are nested inside the h1*/
+
 /* Aligns all text within the header class */
 .header {
     position: relative;
@@ -89,8 +93,10 @@ nav img {
 
 /* NavBars text opacity level */
 .card-footer {
+    margin: 0px 100px;
     opacity: 1;
     font-weight: bolder;
+  
 }
 
 /*--------------------------------------------------- Main Content -------------------------------------------*/
@@ -158,8 +164,10 @@ footer {
 }
 /*---------------------------------------------------- Buttons --------------------------------------------------*/
 /* Styles the buttons used in the application, adds smooth transition when hovering over*/
+
 .submit-button, .start-button {
     position:relative;
+
     background-color: whitesmoke;
     border: 0.5px solid rgb(85, 79, 79);
     border-radius: 10px;
@@ -167,14 +175,16 @@ footer {
     display: inline-block;
     padding: 15px 35px;
     text-decoration: none;
-    margin: 25px 0;
+    margin: 1px 20px;
     transition: background-color 200ms ease-in-out;
 }
  
 .start-button {
     font-weight: bolder;
 }
-
+.start-button:hover {
+    cursor: pointer;
+}
 /*----------------------------------------------------- Saved Sites -----------------------------------------------*/
 /* Cleanly spaces and aligns the users saved sites */
 .saved-sites {
@@ -192,6 +202,51 @@ footer {
     margin: 10px;
     display: flex;
     flex-direction: row;
+
+}
+
+.site {
+    align-items: center;
+    background-color: white;
+    /* added these to make it look smoother */
+    /* feel free to remove them if you want  */
+    border: 3px solid #f0b59aaf;
+    transition: transform 200ms;
+    margin-right: 15px;
+    border-radius: 5px;
+    width: 175px;
+}
+
+.site-body{
+    width: 100%;
+    background-color: #d1fffd;
+    padding: 10px;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+}
+
+.site-body p{
+    line-height: 1.15em;
+    margin-bottom: 5px;
+}
+
+.site-body button{
+    border-radius: 5px;
+    border: none;
+    background-color: #198f68;
+    padding: 8px 20px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.site-body button:hover{
+    background-color: #117a57;
+}
+
+.site img{
+    height: 100px;
+    width: 100px;
 }
 
 /* Styles the users saved sites, adds smooth transition when hovering over each individual site */

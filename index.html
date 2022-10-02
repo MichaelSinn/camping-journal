@@ -37,8 +37,6 @@
     <section class='header'>
         <!-- Span implemented to change design of words -->
         <h1>CAMP JRNL. <span>YOUR ONE STOP CAMPSITE MANAGER</span></h1>
-
-
     </section>
 </header>
 <!-- Modal for adding a new site to database -->
@@ -93,36 +91,41 @@
 <!--main content-->
 <main>
     <!-- The view map, and filter data areas are contained within individual sections -->
+<!--    TODO: Style the filter panel -->
     <section id='container' class='panel'>
         <form class='filter'>
             <h2>Filter Campsites</h2>
-            <label for="filter-weather" id="weather">Rating</label>
+
+            <label for="filter-weather" id="weather" class="label">Rating</label>
             <input id='filter-weather' type='range' min="1" max="5" oninput="ratingValue.innerText = this.value"/>
             <p id="ratingValue">3</p>
-            <label for="filter-location" id="location">Location</label>
+            <label for="filter-location" id="location" class="label">Location</label>
             <input id='filter-location' type='range' min="0" max="600" step="50" oninput="locationValue.innerText = this.value" />
             <p id="locationValue">300</p>
 
-            <p>Season</p>
-            <div class="seasons">
-                <input id="summer" name="summer" type="radio"  value='Summer'/>
-                <label for="summer">Summer</label>
-                <input id="fall" name="fall" type="radio"  value='Fall'/>
-                <label for="fall">Fall</label>
-                <input id="winter" name="winter" type="radio"  value='Winter'/>
-                <label for="winter">Winter</label>
-                <input id="spring" name="spring" type="radio"  value='Spring'/>
-                <label for="spring">Spring</label>
+            <div class="control">
+                <label for="seasons-input" class="label">Season</label>
+                <div class="select">
+                    <select id="seasons-input">
+                        <option>All seasons</option>
+                        <option>Three seasons</option>
+                        <option>Summer</option>
+                    </select>
+                </div>
             </div>
-          
-            <p>Weather</p>
-            <div class="ratings">
-                <input id="clear" name="clear" type="radio"  value='clear'/>
-                <label for="clear">Clear</label>
-                <input id="any-weather" name="any-weather" type="radio"  value='any-weather'/>
-                <label for="any-weather">Any weather</label>
+
+            <div class="control">
+                <label for="weather-input" class="label">Weather</label>
+                <div class="select">
+                    <select id="weather-input">
+                        <option>Only clear</option>
+                        <option>Any weather</option>
+                    </select>
+                </div>
             </div>
-            <button id='search-btn' class='submit-button'>Submit</button>
+            <div class="control">
+                <button class="button is-primary">Search</button>
+            </div>
         </form>
 
         <!-- Map is connected and displayed using the Google Maps API -->

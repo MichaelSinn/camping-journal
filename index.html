@@ -15,7 +15,7 @@
 
     <!-- added the Bulma link, to add the Bulma library -->
 
-    <!-- Connected the Bulma libraryto codebase through the links above -->
+    <!-- Connected the Bulma library to codebase through the links above -->
 
 </head>
 
@@ -27,7 +27,7 @@
         <nav class='card-footer message'>
             <img src='/assets/images/camp-icon.png' class="img" alt='camp icon'>
             <!-- added the new HTML pag link here so the link will work -->
-            <a href="infoPage/newPage.html" target="_blank"> <button  id='submit-btn' class='start-button'>Get Started Now</button></a>
+            <a href="newPage.html"> <button id='submit-btn' class='start-button'>Get Started Now</button></a>
             <a href='#map' style='text-decoration: none;' class='card-footer-item'>Search Campsites</a>
             <a href='#selected-sites' style='text-decoration: none;' class='card-footer-item'>View Saved Sites</a>
             <a href='#container' style='text-decoration: none;' class='card-footer-item'>Give Your Review</a>
@@ -35,7 +35,7 @@
     </div>
 
     <section class='header'>
-        <!-- Span implimented to change design of words -->
+        <!-- Span implemented to change design of words -->
         <h1>CAMP JRNL. <span>YOUR ONE STOP CAMPSITE MANAGER</span></h1>
 
 
@@ -84,7 +84,7 @@
     <section>
         <h3>Weather Forecast</h3>
         <div id="weather-forecast">
-            <img alt="weather-icon">
+            <img src="" alt="weather-icon">
             <p>Weather Description</p>
             <p>Weather Warning</p>
         </div>
@@ -103,7 +103,7 @@
             <input id='filter-location' type='range' min="0" max="600" step="50" oninput="locationValue.innerText = this.value" />
             <p id="locationValue">300</p>
 
-            <legend>Season</legend>
+            <p>Season</p>
             <div class="seasons">
                 <input id="summer" name="summer" type="radio"  value='Summer'/>
                 <label for="summer">Summer</label>
@@ -115,7 +115,7 @@
                 <label for="spring">Spring</label>
             </div>
           
-            <legend>Weather</legend>
+            <p>Weather</p>
             <div class="ratings">
                 <input id="clear" name="clear" type="radio"  value='clear'/>
                 <label for="clear">Clear</label>

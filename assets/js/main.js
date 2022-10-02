@@ -151,7 +151,6 @@ function addCampsite() {
         map: map,
         icon: './assets/images/campsite.png',
         title: newSite.name,
-        campsite: newSite
     });
     marker.addListener("click", () =>{
         map.setCenter(marker.getPosition());

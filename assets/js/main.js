@@ -193,30 +193,37 @@ function deleteSite(){
     return false;
 }
 
-function filterSites(){
-    let seasonFilter = $("#seasons-input");
-    let weatherFilter = $("#weather-input");
-    let locationFilter = $("#filter-location");
-    let ratingFilter = $("#filter-rating");
-
-    campsites.forEach(site => {
-        getWeather(site);
-        if (site.weather === 800){
-
-        }
-    });
+async function filterSites(){
+    let seasonFilter = $("#seasons-input").val();
+    let weatherFilter = $("#weather-input").val();
+    let locationFilter = $("#filter-location").val();
+    let ratingFilter = $("#filter-rating").val();
 
     markers.forEach(marker =>{
-       marker.visible = false;
+        marker.visible = true;
     });
+
+    for (const site of campsites) {
+        await getWeather(site);
+        if (weatherFilter === "clear"){
+            if (Math.floor(site.weather.id / 100) <= 7){
+                markers.forEach(marker =>{
+                    if (marker.position.lat() === site.lat && marker.position.lng() === site.lng){
+                        marker.visible = false;
+                    }
+                });
+            }
+        }
+    }
+
     map.panTo(toronto);
 }
 
-function getWeather(campsite) {
+async function getWeather(campsite) {
     let lat = campsite.lat;
     let lng = campsite.lng;
     let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${WEATHER_API_KEY}&units=metric`;
-    fetch(apiUrl).then(function (response) {
+    await fetch(apiUrl).then(function (response) {
         return response.json();
     }).then(function (data) {
         let currentDay = [];
@@ -240,7 +247,6 @@ function getWeather(campsite) {
         console.log(dailyWeather);
         let worstWeather;
         dailyWeather.forEach(day =>{
-
             day.forEach(hour =>{
                 let currentHourWeather = hour.weather[0];
                 let weatherId = Math.floor(currentHourWeather.id / 100);
@@ -290,10 +296,10 @@ function addSiteCard(site) {
     viewButtonEl.removeClass();
 }
 
-function openEditSite(campsite){
+async function openEditSite(campsite){
     editSiteForm.find("input#edit-name").val(campsite.name);
     editSiteForm.find("input#hidden-id").val(campsite.id);
-    getWeather(campsite);
+    await getWeather(campsite);
     editSiteDialog.dialog('open');
 }
 
@@ -312,6 +318,7 @@ function getCampsiteById(id){
 
 $("#search-button").on("click", function(e){
     e.preventDefault();
+    filterSites();
 })
 
 window.initMap = initMap;

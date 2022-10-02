@@ -120,7 +120,6 @@ nav img {
 .filter, .filterMap {
     border-radius: 15px;
     align-items: center;
-    justify-content: space-evenly;
     transition: transform 200ms ease-in-out;
 }
 
@@ -128,6 +127,10 @@ nav img {
     accent-color: #198f68;
     flex-direction: column;
     flex-wrap: wrap;
+}
+
+.filter > *{
+    margin-bottom: 15px;
 }
 
 .seasons {

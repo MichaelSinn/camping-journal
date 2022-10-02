@@ -215,7 +215,7 @@ function getWeather(campsite) {
         if (currentDay.length !== 0) dailyWeather.push(currentDay); // If this is the final day and has less than a full 24 hours of data, push it
         if (dailyWeather.length > 5) dailyWeather.shift(); // If there is more than 5 days, remove the first day
         console.log(dailyWeather);
-        let forecastSection = $("#weather-forecast");
+
         dailyWeather.forEach(day =>{
             let worstWeather;
             day.forEach(hour =>{
@@ -236,11 +236,11 @@ function getWeather(campsite) {
                     worstWeather = currentHourWeather;
                 }
             });
-            weatherWarningEl.text("Dangerous weather detected.");
+            weatherWarningEl.text("Adverse weather detected.");
             weatherDescriptionEl.text(worstWeather.main);
             weatherIconEl.attr("src", `https://openweathermap.org/img/wn/${worstWeather.icon}@2x.png`);
             if (Math.floor(worstWeather.id / 100) === 8 || Math.floor(worstWeather.id / 100) === 7){
-                weatherWarningEl.text("No dangerous weather detected.");
+                weatherWarningEl.text("No bad weather detected.");
             }
         });
     });

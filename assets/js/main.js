@@ -134,7 +134,9 @@ function addCampsite() {
         id: uuid,
         lat: latitude.val() * 1,
         lng: longitude.val() * 1,
-        weather: {}
+        weather: {},
+        rating: 5,
+        season: "all"
     };
     campsites = JSON.parse(localStorage.getItem("campsites"));
     // Check if name is unique
@@ -177,13 +179,18 @@ function saveSite(){
     let editSiteId = editSiteForm.find("input#hidden-id").val();
     let editCard = $(`#${editSiteId}`);
     let editNameValue = editSiteForm.find("input#edit-name").val();
+    let editSeasonValue = editSiteForm.find("select#season").val();
+    let editRatingValue = editSiteForm.find("input#rating").val();
     campsites = JSON.parse(localStorage.getItem("campsites"));
     campsites.forEach(e =>{
         if (e.id === editSiteId){
             e.name = editNameValue;
+            e.rating = editRatingValue;
+            e.season = editSeasonValue;
         }
     });
     editCard.find("h3").text(editNameValue);
+    editCard.find("p").text(editRatingValue);
     localStorage.setItem("campsites", JSON.stringify(campsites));
     editSiteDialog.dialog("close");
 }
@@ -284,7 +291,7 @@ function addSiteCard(site) {
     newSiteEl.html(`<img src='assets/images/camping.png' alt='image-icon'/>
                      <div class='site-body'> 
                      <h3>${site.name}</h3> 
-                     <p>Description of site goes here</p> 
+                     <p>${site.rating}</p> 
                      <button id="view-site-${site.id}">View Site</button> </div>`);
     sitesForm.append(newSiteEl);
     let viewButtonEl = $(`#view-site-${site.id}`);
@@ -299,11 +306,11 @@ function addSiteCard(site) {
 async function openEditSite(campsite){
     editSiteForm.find("input#edit-name").val(campsite.name);
     editSiteForm.find("input#hidden-id").val(campsite.id);
+    editSiteForm.find("input#rating").val(campsite.rating);
+    editSiteForm.find(`option#${campsite.season}`).attr("selected");
     await getWeather(campsite);
     editSiteDialog.dialog('open');
 }
-
-// TODO: Sort functions by utility functions vs feature functions
 
 function getCampsiteById(id){
     campsites = JSON.parse(localStorage.getItem("campsites"));

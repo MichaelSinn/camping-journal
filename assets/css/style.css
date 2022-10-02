@@ -88,8 +88,10 @@ nav img {
 
 /* NavBars text opacity level */
 .card-footer {
+    margin: 0px 100px;
     opacity: 1;
     font-weight: bolder;
+  
 }
 
 /*--------------------------------------------------- Main Content -------------------------------------------*/
@@ -130,6 +132,7 @@ footer {
 /*---------------------------------------------------- Buttons --------------------------------------------------*/
 /* Styles the buttons used in the application, adds smooth transition when hovering over*/
 .view-button, .start-button {
+    
     background-color: whitesmoke;
     border: 0.5px solid rgb(85, 79, 79);
     border-radius: 10px;
@@ -137,7 +140,7 @@ footer {
     display: inline-block;
     padding: 15px 35px;
     text-decoration: none;
-    margin: 25px 0;
+    margin: 1px 100px;
     transition: background-color 200ms ease-in-out;
 }
  
@@ -147,7 +150,9 @@ footer {
     color: #918887;
     font-weight: bolder;
 }
-
+.start-button:hover {
+    cursor: pointer;
+}
 /*----------------------------------------------------- Saved Sites -----------------------------------------------*/
 /* Cleanly spaces and aligns the users saved sites */
 .saved-sites {

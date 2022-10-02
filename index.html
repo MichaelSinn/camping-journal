@@ -96,8 +96,8 @@
         <form class='filter'>
             <h2>Filter Campsites</h2>
 
-            <label for="filter-weather" id="weather" class="label">Rating</label>
-            <input id='filter-weather' type='range' min="1" max="5" oninput="ratingValue.innerText = this.value"/>
+            <label for="filter-rating" class="label">Rating</label>
+            <input id='filter-rating' type='range' min="1" max="5" oninput="ratingValue.innerText = this.value"/>
             <p id="ratingValue">3</p>
             <label for="filter-location" id="location" class="label">Location</label>
             <input id='filter-location' type='range' min="0" max="600" step="50" oninput="locationValue.innerText = this.value" />
@@ -107,9 +107,9 @@
                 <label for="seasons-input" class="label">Season</label>
                 <div class="select">
                     <select id="seasons-input">
-                        <option>All seasons</option>
-                        <option>Three seasons</option>
-                        <option>Summer</option>
+                        <option value="all">All seasons</option>
+                        <option value="three">Three seasons</option>
+                        <option value="summer">Summer</option>
                     </select>
                 </div>
             </div>
@@ -118,13 +118,13 @@
                 <label for="weather-input" class="label">Weather</label>
                 <div class="select">
                     <select id="weather-input">
-                        <option>Only clear</option>
-                        <option>Any weather</option>
+                        <option value="clear">Only clear</option>
+                        <option value="all">Any weather</option>
                     </select>
                 </div>
             </div>
             <div class="control">
-                <button class="button is-primary button-bg">Search</button>
+                <button id="search-button" class="button is-primary button-bg">Search</button>
             </div>
         </form>
 

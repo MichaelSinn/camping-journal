@@ -6,6 +6,8 @@ const weatherWarningEl = $("#weather-warning");
 const weatherIconEl = $("#weather-icon");
 const weatherDescriptionEl = $("#weather-description");
 
+const toronto = {lat: 43.64287569139718, lng: -79.38692966368654};
+
 let map;
 let markers = [];
 let script = document.createElement('script');
@@ -100,7 +102,7 @@ function initMap() {
             openEditSite(site);
         });
 
-        addSite(e);
+        addSiteCard(e);
     });
 
     map.addListener('click', (e) => {
@@ -131,7 +133,8 @@ function addCampsite() {
         name: siteName.val(),
         id: uuid,
         lat: latitude.val() * 1,
-        lng: longitude.val() * 1
+        lng: longitude.val() * 1,
+        weather: {}
     };
     campsites = JSON.parse(localStorage.getItem("campsites"));
     // Check if name is unique
@@ -166,7 +169,7 @@ function addCampsite() {
     markers.push(marker);
     localStorage.setItem('campsites', JSON.stringify(campsites));
     newSiteDialog.dialog('close');
-    addSite(newSite);
+    addSiteCard(newSite);
     return true;
 }
 
@@ -188,6 +191,25 @@ function saveSite(){
 // TODO: Add deletion functionality to the sites
 function deleteSite(){
     return false;
+}
+
+function filterSites(){
+    let seasonFilter = $("#seasons-input");
+    let weatherFilter = $("#weather-input");
+    let locationFilter = $("#filter-location");
+    let ratingFilter = $("#filter-rating");
+
+    campsites.forEach(site => {
+        getWeather(site);
+        if (site.weather === 800){
+
+        }
+    });
+
+    markers.forEach(marker =>{
+       marker.visible = false;
+    });
+    map.panTo(toronto);
 }
 
 function getWeather(campsite) {
@@ -216,9 +238,9 @@ function getWeather(campsite) {
         if (currentDay.length !== 0) dailyWeather.push(currentDay); // If this is the final day and has less than a full 24 hours of data, push it
         if (dailyWeather.length > 5) dailyWeather.shift(); // If there is more than 5 days, remove the first day
         console.log(dailyWeather);
-
+        let worstWeather;
         dailyWeather.forEach(day =>{
-            let worstWeather;
+
             day.forEach(hour =>{
                 let currentHourWeather = hour.weather[0];
                 let weatherId = Math.floor(currentHourWeather.id / 100);
@@ -244,10 +266,12 @@ function getWeather(campsite) {
                 weatherWarningEl.text("No bad weather detected.");
             }
         });
+
+        campsite.weather = worstWeather;
     });
 }
 
-function addSite(site) {
+function addSiteCard(site) {
     const newSiteEl = $('<div>');
     newSiteEl.addClass("site");
     newSiteEl.attr("id", site.id);
@@ -278,13 +302,17 @@ function openEditSite(campsite){
 function getCampsiteById(id){
     campsites = JSON.parse(localStorage.getItem("campsites"));
     let result = null;
-    campsites.forEach(e =>{
-        if (e.id === id){
-            result = e;
+    campsites.forEach(site =>{
+        if (site.id === id){
+            result = site;
         }
     });
     return result;
 }
+
+$("#search-button").on("click", function(e){
+    e.preventDefault();
+})
 
 window.initMap = initMap;
 document.head.appendChild(script);

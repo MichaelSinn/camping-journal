@@ -34,7 +34,7 @@ h3 {
 /* Aligns all text within the header class */
 .header {
     text-align: center;
-    margin-top: 60px;
+    margin-top: 200px;
 }
 
 /* Formats the letters inside the <span></span> that are nested inside the h1 */
@@ -168,15 +168,14 @@ footer {
 }
  
 .start-button {
+    margin-top: 40px;
     font-weight: bolder;
 }
 .start-button:hover {
     cursor: pointer;
 }
 
-#submit-btn {
-    margin-top: 40px;
-}
+
 /*----------------------------------------------------- Saved Sites -----------------------------------------------*/
 /* Cleanly spaces and aligns the users saved sites */
 .saved-sites {

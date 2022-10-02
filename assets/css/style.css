@@ -22,12 +22,14 @@ main {
     min-height: 100vh;
 }
 
+h2{
+    font-size: 2em;
+}
+
 h3 {
     font-size: 1.5em;
     color: black;
 }
-
-
 
 /*formats the letters inside the <span></span> that are nested inside the h1*/
 
@@ -109,16 +111,19 @@ nav img {
 
 /* Styles and formats the two sections within the panel container */
 .filter, .filterMap {
-    border-radius: 6%;
+    border-radius: 15px;
     align-items: center;
-    justify-content: space-evenly;
     transition: transform 200ms ease-in-out;
 }
 
 .filter {
-    accent-color: #ffbcb1;
+    accent-color: #198f68;
     flex-direction: column;
     flex-wrap: wrap;
+}
+
+.filter > *{
+    margin-bottom: 15px;
 }
 
 .seasons {
@@ -155,7 +160,6 @@ footer {
 
 .submit-button, .start-button {
     position:relative;
-
     background-color: whitesmoke;
     border: 1px solid rgb(85, 79, 79);
     border-radius: 10px;
@@ -163,7 +167,7 @@ footer {
     display: inline-block;
     padding: 15px 35px;
     text-decoration: none;
-    margin: 1px 50px;
+    margin: 1px 30px;
     transition: background-color 200ms ease-in-out;
 }
  
@@ -174,7 +178,6 @@ footer {
 .start-button:hover {
     cursor: pointer;
 }
-
 
 /*----------------------------------------------------- Saved Sites -----------------------------------------------*/
 /* Cleanly spaces and aligns the users saved sites */
@@ -347,7 +350,7 @@ fieldset{
 /* Changes background color of buttons when hovering over them */
 .submit-button:hover, .submit-button:focus, .start-button:hover, .start-button:focus {
     background-color: whitesmoke;
-    border: 2px solid #ffbcb1;
+    border: 1px solid #ffbcb1;
     cursor: pointer;
 }
 
@@ -394,9 +397,10 @@ fieldset{
 }
 
 ::-webkit-scrollbar-thumb{
-    border: 3px solid #151515;
+    /*border: 3px solid #151515;*/
     border-radius: 100px;
-    background: linear-gradient(rgb(243, 161, 161), rgba(206, 17, 17, 0.555));
+    background-color: #0c0c17;
+    /*background: linear-gradient(rgb(243, 161, 161), rgba(206, 17, 17, 0.555));*/
 }
 
 /* Styles the scrollbar underneath the users saved sites*/

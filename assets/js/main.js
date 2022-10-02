@@ -24,7 +24,6 @@ if (!campsites) {
     localStorage.setItem('campsites', JSON.stringify(campsites));
 }
 
-// Adding a modal for adding a campsite
 $(function () {
     newSiteDialog = newSiteForm.dialog({
         autoOpen: false,
@@ -50,10 +49,7 @@ $(function () {
     $('#add-site').button().on('click', function () {
         newSiteDialog.dialog('open');
     });
-});
 
-// Adding a modal for editing a campsite
-$(function(){
     editSiteDialog = editSiteForm.dialog({
         autoOpen: false,
         modal: true,
@@ -104,7 +100,7 @@ function initMap() {
             openEditSite(site);
         });
 
-        addSite(e.name, e.id);
+        addSite(e);
     });
 
     map.addListener('click', (e) => {
@@ -189,10 +185,15 @@ function saveSite(){
     editSiteDialog.dialog("close");
 }
 
+// TODO: Add deletion functionality to the sites
+function deleteSite(){
+    return false;
+}
+
 function getWeather(campsite) {
     let lat = campsite.lat;
     let lng = campsite.lng;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=4525e4c4d6900be2e3932d311208c64e&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${WEATHER_API_KEY}&units=metric`;
     fetch(apiUrl).then(function (response) {
         return response.json();
     }).then(function (data) {
@@ -246,22 +247,21 @@ function getWeather(campsite) {
     });
 }
 
-function addSite(siteName, siteID) {
+function addSite(site) {
     const newSiteEl = $('<div>');
     newSiteEl.addClass("site");
-    newSiteEl.attr("id", siteID);
+    newSiteEl.attr("id", site.id);
     newSiteEl.html(`<img src='assets/images/camping.png' alt='image-icon'/>
                      <div class='site-body'> 
-                     <h3>${siteName}</h3> 
+                     <h3>${site.name}</h3> 
                      <p>Description of site goes here</p> 
-                     <button id="view-site-${siteID}">View Site</button> </div>`);
+                     <button id="view-site-${site.id}">View Site</button> </div>`);
     sitesForm.append(newSiteEl);
-    let viewButtonEl = $(`#view-site-${siteID}`);
+    let viewButtonEl = $(`#view-site-${site.id}`);
     viewButtonEl.button().on("click", function(){
-        let formSite = getCampsiteById(siteID);
-        let position = {lat: formSite.lat, lng: formSite.lng};
+        let position = {lat: site.lat, lng: site.lng};
         map.setCenter(position);
-        openEditSite(formSite);
+        openEditSite(site);
     });
     viewButtonEl.removeClass();
 }
@@ -272,6 +272,8 @@ function openEditSite(campsite){
     getWeather(campsite);
     editSiteDialog.dialog('open');
 }
+
+// TODO: Sort functions by utility functions vs feature functions
 
 function getCampsiteById(id){
     campsites = JSON.parse(localStorage.getItem("campsites"));

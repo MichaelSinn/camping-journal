@@ -2,6 +2,10 @@ const sitesForm = $("#site-container");
 const newSiteForm = $('#new-site-form');
 const editSiteForm = $("#edit-site-form");
 
+const weatherWarningEl = $("#weather-warning");
+const weatherIconEl = $("#weather-icon");
+const weatherDescriptionEl = $("#weather-description");
+
 let map;
 let markers = [];
 let script = document.createElement('script');
@@ -52,8 +56,6 @@ $(function () {
 $(function(){
     editSiteDialog = editSiteForm.dialog({
         autoOpen: false,
-        height: 700,
-        width: 550,
         modal: true,
         buttons: {
             'Save': saveSite, // Replace with function that should be called on save
@@ -99,7 +101,7 @@ function initMap() {
             });
             marker.setAnimation(google.maps.Animation.BOUNCE);
             let site = getCampsiteById(e.id);
-            openEditSite(site.name, site.id);
+            openEditSite(site);
         });
 
         addSite(e.name, e.id);
@@ -139,7 +141,6 @@ function addCampsite() {
     // Check if name is unique
     let unique = true;
     campsites.forEach(e =>{
-        console.log(e.name.toLowerCase(), newSite.name.toLowerCase(), e.name.toLowerCase() === newSite.name.toLowerCase());
         if (e.name.toLowerCase() === newSite.name.toLowerCase()){
             unique = false; // The name is not unique
         }
@@ -154,7 +155,6 @@ function addCampsite() {
         map: map,
         icon: './assets/images/campsite.png',
         title: newSite.name,
-        campsite: newSite
     });
     marker.addListener("click", () =>{
         map.setCenter(marker.getPosition());
@@ -164,13 +164,13 @@ function addCampsite() {
         });
         marker.setAnimation(google.maps.Animation.BOUNCE);
         let site = getCampsiteById(newSite.id);
-        openEditSite(site.name, site.id);
+        openEditSite(site);
     });
     marker.setMap(map);
     markers.push(marker);
     localStorage.setItem('campsites', JSON.stringify(campsites));
     newSiteDialog.dialog('close');
-    addSite(newSite.name, newSite.id);
+    addSite(newSite);
     return true;
 }
 
@@ -189,9 +189,10 @@ function saveSite(){
     editSiteDialog.dialog("close");
 }
 
-function getWeather(lat, lng) {
+function getWeather(campsite) {
+    let lat = campsite.lat;
+    let lng = campsite.lng;
     let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=4525e4c4d6900be2e3932d311208c64e&units=metric`;
-
     fetch(apiUrl).then(function (response) {
         return response.json();
     }).then(function (data) {
@@ -216,18 +217,32 @@ function getWeather(lat, lng) {
         console.log(dailyWeather);
 
         dailyWeather.forEach(day =>{
-           day.forEach(hour =>{
-               weatherCode = Math.floor(hour.weather.id / 100);
-               if (weatherCode === 2 || weatherCode === 5){
-                   // Thunderstorm or Rain - Alert
-               }else if(weatherCode === 3 || weatherCode === 6){
-                   // Drizzle or Snow - Warning
-               }else if(weatherCode === 8){
-                   // No hazardous weather - Clear
-               }
-           });
-        });
+            let worstWeather;
+            day.forEach(hour =>{
+                let currentHourWeather = hour.weather[0];
+                let weatherId = Math.floor(currentHourWeather.id / 100);
+                if (!worstWeather) worstWeather = hour.weather[0];
+                let worstWeatherId = Math.floor(worstWeather.id / 100);
 
+                if(worstWeatherId === 5 || worstWeatherId === 6){
+                    if (weatherId === 2){
+                        worstWeather = currentHourWeather;
+                    }
+                }else if(worstWeatherId === 3){
+                    if (weatherId === 2 || weatherId === 5){
+                        worstWeather = currentHourWeather;
+                    }
+                }else if(worstWeatherId === 8 || worstWeatherId === 7){
+                    worstWeather = currentHourWeather;
+                }
+            });
+            weatherWarningEl.text("Adverse weather detected.");
+            weatherDescriptionEl.text(worstWeather.main);
+            weatherIconEl.attr("src", `https://openweathermap.org/img/wn/${worstWeather.icon}@2x.png`);
+            if (Math.floor(worstWeather.id / 100) === 8 || Math.floor(worstWeather.id / 100) === 7){
+                weatherWarningEl.text("No bad weather detected.");
+            }
+        });
     });
 }
 
@@ -241,17 +256,20 @@ function addSite(siteName, siteID) {
                      <p>Description of site goes here</p> 
                      <button id="view-site-${siteID}">View Site</button> </div>`);
     sitesForm.append(newSiteEl);
-    $(`#view-site-${siteID}`).button().on("click", function(){
+    let viewButtonEl = $(`#view-site-${siteID}`);
+    viewButtonEl.button().on("click", function(){
         let formSite = getCampsiteById(siteID);
         let position = {lat: formSite.lat, lng: formSite.lng};
         map.setCenter(position);
-        openEditSite(formSite.name, siteID);
+        openEditSite(formSite);
     });
+    viewButtonEl.removeClass();
 }
 
-function openEditSite(name, id){
-    editSiteForm.find("input#edit-name").val(name);
-    editSiteForm.find("input#hidden-id").val(id);
+function openEditSite(campsite){
+    editSiteForm.find("input#edit-name").val(campsite.name);
+    editSiteForm.find("input#hidden-id").val(campsite.id);
+    getWeather(campsite);
     editSiteDialog.dialog('open');
 }
 
@@ -267,8 +285,5 @@ function getCampsiteById(id){
 }
 
 window.initMap = initMap;
-
-
-
 document.head.appendChild(script);
 

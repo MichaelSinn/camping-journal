@@ -29,15 +29,15 @@ Link to [Live Website](https://michaelsinn.github.io/camping-journal/)
 ## Credit
 
 ### Michael Sinn
-Link to Michael's [Github Profile](https://github.com/MichaelSinn)
+Link to Michael's [GitHub Profile](https://github.com/MichaelSinn)
 
 ### Trishane Wijeyawickrema
-Link to Trishane's [Github Profile](https://github.com/Trishaneww)
+Link to Trishane's [GitHub Profile](https://github.com/Trishaneww)
 
 ### Imanuel Meshikhi
-Link to Imanuel's [Github Profile](https://github.com/Imanuel3)
+Link to Imanuel's [GitHub Profile](https://github.com/Imanuel3)
 
-## Liscence
+## License
 
 N/A
 

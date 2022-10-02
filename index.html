@@ -15,12 +15,11 @@
 
     <!-- added the Bulma link, to add the Bulma library -->
 
-    <!-- Connected the Bulma libraryto codebase through the links above -->
+    <!-- Connected the Bulma library to codebase through the links above -->
 
 </head>
 
 <body>
-    
 <!-- Header of the page (navbar, bg image) -->
 <!-- Bulma styling included -->
 <header class='main-content '>
@@ -28,30 +27,24 @@
         <nav class='card-footer message'>
             <img src='/assets/images/camp-icon.png' class="img" alt='camp icon'>
             <!-- added the new HTML pag link here so the link will work -->
-            <a href="infoPage/newPage.html" target="_blank"> <button  id='submit-btn' class='start-button'>Get Started Now</button></a>
+            <a href="newPage.html"> <button id='submit-btn' class='start-button'>Get Started Now</button></a>
             <a href='#map' style='text-decoration: none;' class='card-footer-item'>Search Campsites</a>
             <a href='#selected-sites' style='text-decoration: none;' class='card-footer-item'>View Saved Sites</a>
             <a href='#container' style='text-decoration: none;' class='card-footer-item'>Give Your Review</a>
         </nav>
     </div>
-<!-- <div class="nav-bob"> 
-    <nav class="newPage">
-        <a href="newPage.html"> 
-        <button  id='submit-btn' class='start-button'>Get Started Now</button>
-        </a>
-    </nav>     
-</div> -->
+
     <section class='header'>
-        <!-- Span implimented to change design of words -->
+        <!-- Span implemented to change design of words -->
         <h1>CAMP JRNL. <span>YOUR ONE STOP CAMPSITE MANAGER</span></h1>
-        
-       
+
+
     </section>
 </header>
 <!-- Modal for adding a new site to database -->
 <div id='new-site-form' title='New campsite'>
     <p class='validateTips'>All form fields are required.</p>
-   
+
     <form>
         <fieldset>
             <label for='name'>Name</label>
@@ -68,6 +61,7 @@
 </div>
 
 <div id='edit-site-form' title='Campsite'>
+    <h3>Details</h3>
     <form>
         <fieldset>
             <input type="hidden" id="hidden-id">
@@ -86,10 +80,14 @@
             <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
         </fieldset>
     </form>
-    <!-- Add the weather here -->
+    <!-- Add the weather here --> 
     <section>
         <h3>Weather Forecast</h3>
-        <div id="weatherForecast"></div>
+        <div id="weather-forecast">
+            <img id="weather-icon" src="" alt="weather-icon">
+            <p id="weather-description">Weather Description</p>
+            <p id="weather-warning">Weather Warning</p>
+        </div>
     </section>
 </div>
 <!--main content-->
@@ -98,23 +96,40 @@
     <section id='container' class='panel'>
         <form class='filter'>
             <h2>Filter Campsites</h2>
-            <label for="filter-weather">Weather</label>
-            <input id='filter-weather' type='text' placeholder='Weather'/>
-            <!-- <button class="find"> Find your Location here </button> -->
-            <label for="filter-location">Location</label>
-            <input id='filter-location' type='text' placeholder='Distance'/>
-            <button id='search-btn' class='view-button'>Submit</button>
+            <label for="filter-weather" id="weather">Rating</label>
+            <input id='filter-weather' type='range' min="1" max="5" oninput="ratingValue.innerText = this.value"/>
+            <p id="ratingValue">3</p>
+            <label for="filter-location" id="location">Location</label>
+            <input id='filter-location' type='range' min="0" max="600" step="50" oninput="locationValue.innerText = this.value" />
+            <p id="locationValue">300</p>
+
+            <p>Season</p>
+            <div class="seasons">
+                <input id="summer" name="summer" type="radio"  value='Summer'/>
+                <label for="summer">Summer</label>
+                <input id="fall" name="fall" type="radio"  value='Fall'/>
+                <label for="fall">Fall</label>
+                <input id="winter" name="winter" type="radio"  value='Winter'/>
+                <label for="winter">Winter</label>
+                <input id="spring" name="spring" type="radio"  value='Spring'/>
+                <label for="spring">Spring</label>
+            </div>
+          
+            <p>Weather</p>
+            <div class="ratings">
+                <input id="clear" name="clear" type="radio"  value='clear'/>
+                <label for="clear">Clear</label>
+                <input id="any-weather" name="any-weather" type="radio"  value='any-weather'/>
+                <label for="any-weather">Any weather</label>
+            </div>
+            <button id='search-btn' class='submit-button'>Submit</button>
         </form>
 
         <!-- Map is connected and displayed using the Google Maps API -->
         <article class='filterMap' id='map'>
-            
+
         </article>
     </section>
-
-    <div>
-        <input id='search-sites' type="text" placeholder="Search Saved Sites"/>
-    </div>
     <!-- Contains the users saved sites, populated through JS function -->
     <section id='selected-sites' class='saved-sites'>
         <div class="site-container" id="site-container">

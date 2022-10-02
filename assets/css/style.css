@@ -78,7 +78,8 @@ h3 {
 /*---------------------------------------------- Navigation Bar --------------------------------------------*/
 /* Styles navbar logo */
 nav img {
-    width: 2%;
+    align-self: center;
+    width: 12%;
 }
 
 /* Navbar's opacity level */
@@ -487,5 +488,8 @@ fieldset{
         align-items: center;
         justify-content: center;
         margin-top: 400px;
+    }
+    nav img {
+        width: 2%;
     }
 }

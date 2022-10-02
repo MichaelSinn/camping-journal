@@ -205,19 +205,28 @@ async function filterSites(){
     let ratingFilter = $("#filter-rating").val();
 
     markers.forEach(marker =>{
-        marker.visible = true;
+        marker.visible = false;
     });
 
     for (const site of campsites) {
+        let showMarker = false;
         await getWeather(site);
         if (weatherFilter === "clear"){
-            if (Math.floor(site.weather.id / 100) <= 7){
-                markers.forEach(marker =>{
-                    if (marker.position.lat() === site.lat && marker.position.lng() === site.lng){
-                        marker.visible = false;
-                    }
-                });
+            if (Math.floor(site.weather.id / 100) >= 7){
+                showMarker = true;
             }
+        }else{
+            showMarker = true;
+        }
+
+        showMarker = showMarker && (site.season === seasonFilter) && (site.rating >= ratingFilter);
+
+        if (showMarker){
+            markers.forEach(marker =>{
+                if (marker.position.lat() === site.lat && marker.position.lng() === site.lng){
+                    marker.visible = true;
+                }
+            });
         }
     }
 

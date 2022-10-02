@@ -193,7 +193,7 @@ function deleteSite(){
 function getWeather(campsite) {
     let lat = campsite.lat;
     let lng = campsite.lng;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=4525e4c4d6900be2e3932d311208c64e&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${WEATHER_API_KEY}&units=metric`;
     fetch(apiUrl).then(function (response) {
         return response.json();
     }).then(function (data) {

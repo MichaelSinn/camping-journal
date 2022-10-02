@@ -207,7 +207,7 @@ footer {
     border: 3px solid #f0b59aaf;
     transition: transform 200ms;
     margin-right: 15px;
-    border-radius: 5px;
+    border-radius: 10px;
     width: 175px;
 }
 
@@ -244,15 +244,6 @@ footer {
 }
 
 /* Styles the users saved sites, adds smooth transition when hovering over each individual site */
-.site {
-    align-items: center;
-    background-color: whitesmoke;
-    border: 3px solid #f0b59aaf;
-    transition: transform 200ms;
-    margin-right: 15px;
-    border-radius: 5px;
-    width: 175px;
-}
 
 .site-body{
     width: 100%;

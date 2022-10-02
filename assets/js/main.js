@@ -98,8 +98,7 @@ function initMap() {
                 mE.setAnimation(null);
             });
             marker.setAnimation(google.maps.Animation.BOUNCE);
-            let site = getCampsiteById(e.id);
-            openEditSite(site);
+            openEditSite(e.id);
         });
 
         addSiteCard(e);
@@ -164,8 +163,7 @@ function addCampsite() {
             e.setAnimation(null);
         });
         marker.setAnimation(google.maps.Animation.BOUNCE);
-        let site = getCampsiteById(newSite.id);
-        openEditSite(site);
+        openEditSite(newSite.id);
     });
     marker.setMap(map);
     markers.push(marker);
@@ -298,16 +296,20 @@ function addSiteCard(site) {
     viewButtonEl.button().on("click", function(){
         let position = {lat: site.lat, lng: site.lng};
         map.setCenter(position);
-        openEditSite(site);
+        openEditSite(site.id);
     });
     viewButtonEl.removeClass();
 }
 
-async function openEditSite(campsite){
+async function openEditSite(id){
+    let campsite = getCampsiteById(id)
     editSiteForm.find("input#edit-name").val(campsite.name);
     editSiteForm.find("input#hidden-id").val(campsite.id);
     editSiteForm.find("input#rating").val(campsite.rating);
-    editSiteForm.find(`option#${campsite.season}`).attr("selected");
+    editSiteForm.find(`option[value=all`).removeAttr("selected");
+    editSiteForm.find(`option[value=three`).removeAttr("selected");
+    editSiteForm.find(`option[value=summer`).removeAttr("selected");
+    editSiteForm.find(`option[value=${campsite.season}]`).attr("selected", "selected");
     await getWeather(campsite);
     editSiteDialog.dialog('open');
 }

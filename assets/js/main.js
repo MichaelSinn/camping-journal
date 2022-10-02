@@ -2,6 +2,10 @@ const sitesForm = $("#site-container");
 const newSiteForm = $('#new-site-form');
 const editSiteForm = $("#edit-site-form");
 
+const weatherWarningEl = $("#weather-warning");
+const weatherIconEl = $("#weather-icon");
+const weatherDescriptionEl = $("#weather-description");
+
 let map;
 let markers = [];
 let script = document.createElement('script');
@@ -212,6 +216,33 @@ function getWeather(campsite) {
         if (dailyWeather.length > 5) dailyWeather.shift(); // If there is more than 5 days, remove the first day
         console.log(dailyWeather);
         let forecastSection = $("#weather-forecast");
+        dailyWeather.forEach(day =>{
+            let worstWeather;
+            day.forEach(hour =>{
+                let currentHourWeather = hour.weather[0];
+                let weatherId = Math.floor(currentHourWeather.id / 100);
+                if (!worstWeather) worstWeather = hour.weather[0];
+                let worstWeatherId = Math.floor(worstWeather.id / 100);
+
+                if(worstWeatherId === 5 || worstWeatherId === 6){
+                    if (weatherId === 2){
+                        worstWeather = currentHourWeather;
+                    }
+                }else if(worstWeatherId === 3){
+                    if (weatherId === 2 || weatherId === 5){
+                        worstWeather = currentHourWeather;
+                    }
+                }else if(worstWeatherId === 8 || worstWeatherId === 7){
+                    worstWeather = currentHourWeather;
+                }
+            });
+            weatherWarningEl.text("Dangerous weather detected.");
+            weatherDescriptionEl.text(worstWeather.main);
+            weatherIconEl.attr("src", `https://openweathermap.org/img/wn/${worstWeather.icon}@2x.png`);
+            if (Math.floor(worstWeather.id / 100) === 8 || Math.floor(worstWeather.id / 100) === 7){
+                weatherWarningEl.text("No dangerous weather detected.");
+            }
+        });
     });
 }
 

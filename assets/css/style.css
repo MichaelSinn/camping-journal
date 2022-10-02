@@ -33,13 +33,8 @@ h3 {
 
 /* Aligns all text within the header class */
 .header {
-    position: relative;
-    color: black;
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 200px;
+    text-align: center;
+    margin-top: 60px;
 }
 
 /* Formats the letters inside the <span></span> that are nested inside the h1 */
@@ -70,7 +65,7 @@ h3 {
     left: 0;
     bottom: 0;
     right: 0;
-    opacity: 0.45;
+    opacity: 0.6;
     background-image: url('/assets/images/landingscreen.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
@@ -91,12 +86,10 @@ nav img {
     opacity: 0.3;
 }
 
-/* NavBars text opacity level */
 .card-footer {
-    margin: 0 100px;
-    opacity: 1;
-    font-weight: bolder;
-  
+    margin:0px;
+    display: flex;
+    flex-direction: column;
 }
 
 /*--------------------------------------------------- Main Content -------------------------------------------*/
@@ -179,6 +172,10 @@ footer {
 }
 .start-button:hover {
     cursor: pointer;
+}
+
+#submit-btn {
+    margin-top: 40px;
 }
 /*----------------------------------------------------- Saved Sites -----------------------------------------------*/
 /* Cleanly spaces and aligns the users saved sites */
@@ -385,6 +382,7 @@ fieldset{
     background-color: #e1c3e725;
     border: 3px solid #f5b8b8af;
     border-radius: 10px;
+    height: 320px;
 }
 
 /* styled the window scrollbar */
@@ -481,5 +479,19 @@ fieldset{
     .saved-sites {
         margin-top: 20px;
         margin-left: 135px;
+    }
+    /* NavBars text opacity level */
+    .card-footer {
+        flex-direction: row;
+        font-weight: bolder;
+    }
+    .header {
+        position: relative;
+        color: black;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 400px;
     }
 }

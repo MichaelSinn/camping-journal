@@ -31,8 +31,6 @@ h3 {
     color: black;
 }
 
-
-
 /*formats the letters inside the <span></span> that are nested inside the h1*/
 
 /* Aligns all text within the header class */
@@ -127,7 +125,7 @@ nav img {
 }
 
 .filter {
-    accent-color: #ffbcb1;
+    accent-color: #198f68;
     flex-direction: column;
     flex-wrap: wrap;
 }
@@ -182,6 +180,13 @@ footer {
 }
 .start-button:hover {
     cursor: pointer;
+}
+
+.button.is-primary{
+    background-color: #198f68;
+}
+.button.is-primary:hover{
+    background-color: #117a57;
 }
 /*----------------------------------------------------- Saved Sites -----------------------------------------------*/
 /* Cleanly spaces and aligns the users saved sites */

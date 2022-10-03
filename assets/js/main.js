@@ -195,7 +195,7 @@ function saveSite(){
     let unique = true;
     campsites = JSON.parse(localStorage.getItem("campsites"));
     campsites.forEach(e =>{
-        if (e.name.toLowerCase() === editNameValue.toLowerCase()){
+        if (e.name.toLowerCase() === editNameValue.toLowerCase() && e.id !== editSiteId){
             $(".name-error").text("This name is unavailable");
             unique = false;
         }
@@ -206,7 +206,10 @@ function saveSite(){
     oldSite.rating = editRatingValue;
     oldSite.season = editSeasonValue;
     editCard.find("h3").text(editNameValue);
-    editCard.find("p").text(editRatingValue);
+    editCard.find("p").html("");
+    for (let i = 0; i < oldSite.rating; i++){
+        editCard.find("p").append("★");
+    }
     localStorage.setItem("campsites", JSON.stringify(campsites));
     editSiteDialog.dialog("close");
 }
@@ -316,9 +319,14 @@ function addSiteCard(site) {
     newSiteEl.html(`<img src='assets/images/camping.png' alt='image-icon'/>
                      <div class='site-body'> 
                      <h3>${site.name}</h3> 
-                     <p>${site.rating}</p> 
+                     <p id="rating-${site.id}"></p> 
                      <button id="view-site-${site.id}">View Site</button> </div>`);
     sitesForm.append(newSiteEl);
+    let ratingEl = $(`#rating-${site.id}`);
+    ratingEl.html("");
+    for (let i = 0; i < site.rating; i++){
+        ratingEl.append("★");
+    }
     let viewButtonEl = $(`#view-site-${site.id}`);
     viewButtonEl.button().on("click", function(){
         let position = {lat: site.lat, lng: site.lng};

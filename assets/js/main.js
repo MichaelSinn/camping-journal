@@ -26,6 +26,7 @@ if (!campsites) {
     localStorage.setItem('campsites', JSON.stringify(campsites));
 }
 
+// Function for setting up jquery modals
 $(function () {
     newSiteDialog = newSiteForm.dialog({
         autoOpen: false,

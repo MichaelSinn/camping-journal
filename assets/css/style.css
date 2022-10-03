@@ -68,7 +68,7 @@ h3 {
     bottom: 0;
     right: 0;
     opacity: 0.6;
-    background-image: url('/assets/images/landingscreen.jpeg');
+    background-image: url('../images/landingscreen.jpeg');
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;

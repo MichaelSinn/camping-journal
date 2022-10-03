@@ -93,7 +93,8 @@
         <div class="field">
             <label for='rating' class="label">Rating</label>
             <div class="control">
-                <input type='text' name='rating' id='rating' value='' class='input'>
+                <input id='rating' type='range' min="1" max="5" step="1" oninput="document.getElementById('editRatingValue').innerText = this.value" />
+                <p id="editRatingValue">5</p>
             </div>
         </div>
         <!-- Allow form submission with keyboard without duplicating the dialog button -->
@@ -120,11 +121,11 @@
             <h2>Filter Campsites</h2>
 
             <label for="filter-rating" class="label">Rating</label>
-            <input id='filter-rating' type='range' min="1" max="5" oninput="ratingValue.innerText = this.value"/>
+            <input id='filter-rating' type='range' min="1" max="5" oninput="document.getElementById('ratingValue').innerText = this.value"/>
             <p id="ratingValue">3</p>
-            <label for="filter-location" id="location" class="label">Location</label>
-            <input id='filter-location' type='range' min="0" max="600" step="50" oninput="locationValue.innerText = this.value" />
-            <p id="locationValue">300</p>
+<!--            <label for="filter-location" id="location" class="label">Location</label>-->
+<!--            <input id='filter-location' type='range' min="0" max="600" step="50" oninput="locationValue.innerText = this.value" />-->
+<!--            <p id="locationValue">300</p>-->
 
             <div class="control">
                 <label for="seasons-input" class="label">Season</label>

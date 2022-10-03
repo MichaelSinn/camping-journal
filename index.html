@@ -2,7 +2,7 @@
 <html lang='en'>
 <head>
     <meta charset='UTF-8'>
-    <meta http-equiv='X-UA-Compatible' contents='IE=edge'>
+    <meta http-equiv='X-UA-Compatible'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet'>
     <link rel='stylesheet' href='./assets/css/reset.css'>
@@ -42,41 +42,62 @@
 </header>
 <!-- Modal for adding a new site to database -->
 <div id='new-site-form' title='New campsite'>
-    <p class='validateTips'>All form fields are required.</p>
-
     <form>
-        <fieldset>
-            <label for='name'>Name</label>
-            <input type='text' name='name' id='name' value='' class='text ui-widget-content ui-corner-all'>
-            <label for='lat'>Latitude coordinate</label>
-            <input type='text' name='lat' id='lat' value='' class='text ui-widget-content ui-corner-all'>
-            <label for='lng'>Longitude coordinate</label>
-            <input type='text' name='lng' id='lng' value='' class='text ui-widget-content ui-corner-all'>
+        <div class="field">
+            <label for='name' class="label">Name</label>
+            <div class="control">
+                <input type='text' name='name' id='name' value='' class='input'>
+                <p class="help is-danger name-error"></p>
+            </div>
+        </div>
+        <div class="field">
+            <label for='lat' class="label">Latitude coordinate</label>
+            <div class="control">
+                <input type='text' name='lat' id='lat' value='' class='input'>
+            </div>
+        </div>
 
-            <!-- Allow form submission with keyboard without duplicating the dialog button -->
-            <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
-        </fieldset>
+        <div class="field">
+            <label for='lng' class="label">Longitude coordinate</label>
+            <div class="control">
+                <input type='text' name='lng' id='lng' value='' class='input'>
+            </div>
+        </div>
+
+        <!-- Allow form submission with keyboard without duplicating the dialog button -->
+        <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
     </form>
 </div>
 
-<div id='edit-site-form' title='Campsite'>
-    <h3>Details</h3>
+<div id='edit-site-form' title='Details'>
     <form>
-        <fieldset>
-            <input type="hidden" id="hidden-id">
-            <label for='edit-name'>Name</label>
-            <input type='text' name='name' id='edit-name' value='' class='text ui-widget-content ui-corner-all'>
-            <label for='season'>Season</label>
-            <select type='text' name='season' id='season' class='text ui-widget-content ui-corner-all'>
-                <option id="all" value="all">All seasons</option>
-                <option id="three" value="three">Three seasons</option>
-                <option id="summer" value="summer">Summer</option>
-            </select>
-            <label for='rating'>Rating</label>
-            <input type='text' name='rating' id='rating' value='' class='text ui-widget-content ui-corner-all'>
-            <!-- Allow form submission with keyboard without duplicating the dialog button -->
-            <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
-        </fieldset>
+        <input type="hidden" id="hidden-id">
+        <div class="field">
+            <label for='edit-name' class="label">Name</label>
+            <div class="control">
+                <input type='text' name='name' id='edit-name' value='' class='input'>
+                <p class="help is-danger name-error"></p>
+            </div>
+        </div>
+        <div class="field">
+            <label for='season' class="label">Season</label>
+            <div class="control">
+                <select type='text' name='season' id='season' class='select'>
+                    <option id="all" value="all">All seasons</option>
+                    <option id="three" value="three">Three seasons</option>
+                    <option id="summer" value="summer">Summer</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="field">
+            <label for='rating' class="label">Rating</label>
+            <div class="control">
+                <input type='text' name='rating' id='rating' value='' class='input'>
+            </div>
+        </div>
+        <!-- Allow form submission with keyboard without duplicating the dialog button -->
+        <input type='submit' tabindex='-1' style='position:absolute; top:-1000px'>
     </form>
     <!-- Add the weather here --> 
     <section>
@@ -88,6 +109,8 @@
         </div>
     </section>
 </div>
+
+
 <!--main content-->
 <main>
     <!-- The view map, and filter data areas are contained within individual sections -->

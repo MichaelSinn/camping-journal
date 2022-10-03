@@ -29,19 +29,24 @@ if (!campsites) {
 $(function () {
     newSiteDialog = newSiteForm.dialog({
         autoOpen: false,
-        height: 400,
-        width: 350,
         modal: true,
-        buttons: {
-            'Add Campsite': addCampsite,
-            Cancel: function () {
-                newSiteDialog.dialog('close');
+        buttons: [
+            {text: 'Add Campsite', click: addCampsite, class: "button is-primary"},
+            {
+                text: "Cancel", click: function () {
+                    newSiteDialog.dialog('close');
+                }, class: "button"
             }
-        },
+        ],
         close: function () {
+            $("#name-error").text("");
             saveForm[0].reset();
             allFields.removeClass('ui-state-error');
-        }
+        },
+        open: function(){
+        $(".ui-dialog-titlebar").addClass("modal-header");
+        $(".ui-dialog-titlebar-close").hide();
+    }
     });
     saveForm = newSiteDialog.find('form').on('submit', function (event) {
         event.preventDefault();
@@ -55,18 +60,25 @@ $(function () {
     editSiteDialog = editSiteForm.dialog({
         autoOpen: false,
         modal: true,
-        buttons: {
-            'Save': saveSite, // Replace with function that should be called on save
-            Cancel: function () {
-                editSiteDialog.dialog('close');
+        buttons: [
+            {text: 'Save', click: saveSite, class: "button is-primary"}, // Replace with function that should be called on save
+            {
+                text: "Cancel", click: function () {
+                    editSiteDialog.dialog('close');
+                }, class: "button"
             }
-        },
+        ],
         close: function () {
             markers.forEach(e =>{
                 e.setAnimation(null);
             });
+            $("#name-error").text("");
             editForm[0].reset();
             allFields.removeClass('ui-state-error');
+        },
+        open: function(){
+            $(".ui-dialog-titlebar").addClass("modal-header");
+            $(".ui-dialog-titlebar-close").hide();
         }
     });
     editForm = editSiteDialog.find('form').on('submit', function (event) {
@@ -146,7 +158,7 @@ function addCampsite() {
         }
     });
     if (!unique){
-        $("#name").addClass("ui-state-error");
+        $(".name-error").text("This name is unavailable");
         return false;
     }  // Add in a warning / alert that the name is not unique
     campsites.push(newSite);
@@ -179,14 +191,20 @@ function saveSite(){
     let editNameValue = editSiteForm.find("input#edit-name").val();
     let editSeasonValue = editSiteForm.find("select#season").val();
     let editRatingValue = editSiteForm.find("input#rating").val();
+    let oldSite;
+    let unique = true;
     campsites = JSON.parse(localStorage.getItem("campsites"));
     campsites.forEach(e =>{
-        if (e.id === editSiteId){
-            e.name = editNameValue;
-            e.rating = editRatingValue;
-            e.season = editSeasonValue;
+        if (e.name.toLowerCase() === editNameValue.toLowerCase()){
+            $(".name-error").text("This name is unavailable");
+            unique = false;
         }
+        if (e.id === editSiteId) oldSite = e;
     });
+    if (!unique) return false;
+    oldSite.name = editNameValue;
+    oldSite.rating = editRatingValue;
+    oldSite.season = editSeasonValue;
     editCard.find("h3").text(editNameValue);
     editCard.find("p").text(editRatingValue);
     localStorage.setItem("campsites", JSON.stringify(campsites));

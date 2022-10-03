@@ -1,7 +1,7 @@
 /*-------------------------------------------- Global Selectors -------------------------------------------------*/
 /* puts img in background */
 body{
-    background-image: url("/assets/images/FamilyCamping-2021-GettyImages-948512452-2.webp");
+    background-image: url("../images/FamilyCamping-2021-GettyImages-948512452-2.webp");
     background-attachment: fixed;
     background-size: cover;
 }
@@ -9,7 +9,7 @@ body{
 /* all these classes are are chosen to have the same effects */
 .head, .top-head, .enjoy, .howTo, .back{
     font-family: 'Courier New', Courier, monospace;  
-    color:rgb(223, 160, 108) ;
+    color:rgb(223, 160, 108);
     animation: top-head 1s ease-in-out infinite alternate;
 }
 /* the head positioned properly at the top */

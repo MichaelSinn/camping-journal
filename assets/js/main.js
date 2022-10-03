@@ -43,10 +43,10 @@ $(function () {
             saveForm[0].reset();
             allFields.removeClass('ui-state-error');
         },
-        open: function(){
-        $(".ui-dialog-titlebar").addClass("modal-header");
-        $(".ui-dialog-titlebar-close").hide();
-    }
+        open: function () {
+            $(".ui-dialog-titlebar").addClass("modal-header");
+            $(".ui-dialog-titlebar-close").hide();
+        }
     });
     saveForm = newSiteDialog.find('form').on('submit', function (event) {
         event.preventDefault();
@@ -69,14 +69,14 @@ $(function () {
             }
         ],
         close: function () {
-            markers.forEach(e =>{
+            markers.forEach(e => {
                 e.setAnimation(null);
             });
             $("#name-error").text("");
             editForm[0].reset();
             allFields.removeClass('ui-state-error');
         },
-        open: function(){
+        open: function () {
             $(".ui-dialog-titlebar").addClass("modal-header");
             $(".ui-dialog-titlebar-close").hide();
         }
@@ -104,9 +104,9 @@ function initMap() {
 
         markers.push(marker);
 
-        marker.addListener("click", () =>{
+        marker.addListener("click", () => {
             map.setCenter(marker.getPosition());
-            markers.forEach(mE =>{
+            markers.forEach(mE => {
                 mE.setAnimation(null);
             });
             marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -117,7 +117,7 @@ function initMap() {
     });
 
     map.addListener('click', (e) => {
-        markers.forEach(e =>{
+        markers.forEach(e => {
             e.setAnimation(null);
         });
         console.log(e.latLng.lat(), e.latLng.lng());
@@ -129,7 +129,7 @@ function initMap() {
 }
 
 // UUID function from https://www.w3resource.com/javascript-exercises/javascript-math-exercise-23.php
-function create_UUID(){
+function create_UUID() {
     let dt = new Date().getTime();
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         let r = (dt + Math.random() * 16) % 16 | 0;
@@ -152,12 +152,12 @@ function addCampsite() {
     campsites = JSON.parse(localStorage.getItem("campsites"));
     // Check if name is unique
     let unique = true;
-    campsites.forEach(e =>{
-        if (e.name.toLowerCase() === newSite.name.toLowerCase()){
+    campsites.forEach(e => {
+        if (e.name.toLowerCase() === newSite.name.toLowerCase()) {
             unique = false; // The name is not unique
         }
     });
-    if (!unique){
+    if (!unique) {
         $(".name-error").text("This name is unavailable");
         return false;
     }  // Add in a warning / alert that the name is not unique
@@ -168,10 +168,10 @@ function addCampsite() {
         icon: './assets/images/campsite.png',
         title: newSite.name,
     });
-    marker.addListener("click", () =>{
+    marker.addListener("click", () => {
         map.setCenter(marker.getPosition());
         editSiteDialog.dialog("open");
-        markers.forEach(e =>{
+        markers.forEach(e => {
             e.setAnimation(null);
         });
         marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -185,7 +185,7 @@ function addCampsite() {
     return true;
 }
 
-function saveSite(){
+function saveSite() {
     let editSiteId = editSiteForm.find("input#hidden-id").val();
     let editCard = $(`#${editSiteId}`);
     let editNameValue = editSiteForm.find("input#edit-name").val();
@@ -194,8 +194,8 @@ function saveSite(){
     let oldSite;
     let unique = true;
     campsites = JSON.parse(localStorage.getItem("campsites"));
-    campsites.forEach(e =>{
-        if (e.name.toLowerCase() === editNameValue.toLowerCase() && e.id !== editSiteId){
+    campsites.forEach(e => {
+        if (e.name.toLowerCase() === editNameValue.toLowerCase() && e.id !== editSiteId) {
             $(".name-error").text("This name is unavailable");
             unique = false;
         }
@@ -207,7 +207,7 @@ function saveSite(){
     oldSite.season = editSeasonValue;
     editCard.find("h3").text(editNameValue);
     editCard.find("p").html("");
-    for (let i = 0; i < oldSite.rating; i++){
+    for (let i = 0; i < oldSite.rating; i++) {
         editCard.find("p").append("★");
     }
     localStorage.setItem("campsites", JSON.stringify(campsites));
@@ -215,36 +215,36 @@ function saveSite(){
 }
 
 // TODO: Add deletion functionality to the sites
-function deleteSite(){
+function deleteSite() {
     return false;
 }
 
-async function filterSites(){
+async function filterSites() {
     let seasonFilter = $("#seasons-input").val();
     let weatherFilter = $("#weather-input").val();
     let locationFilter = $("#filter-location").val();
     let ratingFilter = $("#filter-rating").val();
 
-    markers.forEach(marker =>{
+    markers.forEach(marker => {
         marker.visible = false;
     });
 
     for (const site of campsites) {
         let showMarker = false;
         await getWeather(site);
-        if (weatherFilter === "clear"){
-            if (Math.floor(site.weather.id / 100) >= 7){
+        if (weatherFilter === "clear") {
+            if (Math.floor(site.weather.id / 100) >= 7) {
                 showMarker = true;
             }
-        }else{
+        } else {
             showMarker = true;
         }
 
         showMarker = showMarker && (site.season === seasonFilter) && (site.rating >= ratingFilter);
 
-        if (showMarker){
-            markers.forEach(marker =>{
-                if (marker.position.lat() === site.lat && marker.position.lng() === site.lng){
+        if (showMarker) {
+            markers.forEach(marker => {
+                if (marker.position.lat() === site.lat && marker.position.lng() === site.lng) {
                     marker.visible = true;
                 }
             });
@@ -281,29 +281,29 @@ async function getWeather(campsite) {
         if (dailyWeather.length > 5) dailyWeather.shift(); // If there is more than 5 days, remove the first day
         console.log(dailyWeather);
         let worstWeather;
-        dailyWeather.forEach(day =>{
-            day.forEach(hour =>{
+        dailyWeather.forEach(day => {
+            day.forEach(hour => {
                 let currentHourWeather = hour.weather[0];
                 let weatherId = Math.floor(currentHourWeather.id / 100);
                 if (!worstWeather) worstWeather = hour.weather[0];
                 let worstWeatherId = Math.floor(worstWeather.id / 100);
 
-                if(worstWeatherId === 5 || worstWeatherId === 6){
-                    if (weatherId === 2){
+                if (worstWeatherId === 5 || worstWeatherId === 6) {
+                    if (weatherId === 2) {
                         worstWeather = currentHourWeather;
                     }
-                }else if(worstWeatherId === 3){
-                    if (weatherId === 2 || weatherId === 5){
+                } else if (worstWeatherId === 3) {
+                    if (weatherId === 2 || weatherId === 5) {
                         worstWeather = currentHourWeather;
                     }
-                }else if(worstWeatherId === 8 || worstWeatherId === 7){
+                } else if (worstWeatherId === 8 || worstWeatherId === 7) {
                     worstWeather = currentHourWeather;
                 }
             });
             weatherWarningEl.text("Adverse weather detected.");
             weatherDescriptionEl.text(worstWeather.main);
             weatherIconEl.attr("src", `https://openweathermap.org/img/wn/${worstWeather.icon}@2x.png`);
-            if (Math.floor(worstWeather.id / 100) === 8 || Math.floor(worstWeather.id / 100) === 7){
+            if (Math.floor(worstWeather.id / 100) === 8 || Math.floor(worstWeather.id / 100) === 7) {
                 weatherWarningEl.text("No bad weather detected.");
             }
         });
@@ -324,11 +324,11 @@ function addSiteCard(site) {
     sitesForm.append(newSiteEl);
     let ratingEl = $(`#rating-${site.id}`);
     ratingEl.html("");
-    for (let i = 0; i < site.rating; i++){
+    for (let i = 0; i < site.rating; i++) {
         ratingEl.append("★");
     }
     let viewButtonEl = $(`#view-site-${site.id}`);
-    viewButtonEl.button().on("click", function(){
+    viewButtonEl.button().on("click", function () {
         let position = {lat: site.lat, lng: site.lng};
         map.setCenter(position);
         openEditSite(site.id);
@@ -336,11 +336,12 @@ function addSiteCard(site) {
     viewButtonEl.removeClass();
 }
 
-async function openEditSite(id){
+async function openEditSite(id) {
     let campsite = getCampsiteById(id)
     editSiteForm.find("input#edit-name").val(campsite.name);
     editSiteForm.find("input#hidden-id").val(campsite.id);
     editSiteForm.find("input#rating").val(campsite.rating);
+    editSiteForm.find("p#editRatingValue").text(campsite.rating);
     editSiteForm.find(`option[value=all`).removeAttr("selected");
     editSiteForm.find(`option[value=three`).removeAttr("selected");
     editSiteForm.find(`option[value=summer`).removeAttr("selected");
@@ -349,18 +350,18 @@ async function openEditSite(id){
     editSiteDialog.dialog('open');
 }
 
-function getCampsiteById(id){
+function getCampsiteById(id) {
     campsites = JSON.parse(localStorage.getItem("campsites"));
     let result = null;
-    campsites.forEach(site =>{
-        if (site.id === id){
+    campsites.forEach(site => {
+        if (site.id === id) {
             result = site;
         }
     });
     return result;
 }
 
-$("#search-button").on("click", function(e){
+$("#search-button").on("click", function (e) {
     e.preventDefault();
     filterSites();
 })

@@ -193,6 +193,11 @@ function saveSite() {
     let editRatingValue = editSiteForm.find("input#rating").val();
     let oldSite;
     let unique = true;
+    if (editNameValue === ""){
+        deleteSite(editSiteId);
+        editSiteDialog.dialog("close");
+        return false;
+    }
     campsites = JSON.parse(localStorage.getItem("campsites"));
     campsites.forEach(e => {
         if (e.name.toLowerCase() === editNameValue.toLowerCase() && e.id !== editSiteId) {
@@ -214,15 +219,26 @@ function saveSite() {
     editSiteDialog.dialog("close");
 }
 
-// TODO: Add deletion functionality to the sites
-function deleteSite() {
-    return false;
+function deleteSite(id) {
+    let deleteSite = getCampsiteById(id);
+    markers.forEach((marker, index) =>{
+        if (marker.position.lat() === deleteSite.lat && marker.position.lng() === deleteSite.lng) {
+            marker.visible = false;
+            markers.splice(index, 1);
+        }
+    });
+    sitesForm.find(`div#${id}`).remove();
+    campsites.forEach((campsite, index) =>{
+        if (campsite.id === id){
+            campsites.splice(index, 1);
+        }
+    });
+    localStorage.setItem("campsites", JSON.stringify(campsites));
 }
 
 async function filterSites() {
     let seasonFilter = $("#seasons-input").val();
     let weatherFilter = $("#weather-input").val();
-    let locationFilter = $("#filter-location").val();
     let ratingFilter = $("#filter-rating").val();
 
     markers.forEach(marker => {

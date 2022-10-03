@@ -435,7 +435,7 @@ fieldset{
 /* Adjusts the margins to format cleaner for larger screen dimensions */
 @media (min-width: 900px) {
     .panel {
-        max-width: 1400px;
+        max-width: 90%;
         flex-direction: row;
         flex-wrap:nowrap;
     }

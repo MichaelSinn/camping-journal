@@ -310,13 +310,6 @@ footer {
     height: 500px;
 }
 
-/* Styles border of the below ID */
-#new-site-form {
-  text-align: center;
-  outline: solid 1px rgba(150, 155, 150, 0.452);
-  border-radius: 10px 10px 10px 10px; 
-}
-
 /* Added margin so it will fit properly */
 .validateTips{
   margin-bottom: 20px;

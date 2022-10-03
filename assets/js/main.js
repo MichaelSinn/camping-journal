@@ -29,8 +29,6 @@ if (!campsites) {
 $(function () {
     newSiteDialog = newSiteForm.dialog({
         autoOpen: false,
-        height: 400,
-        width: 350,
         modal: true,
         buttons: [
             {text: 'Add Campsite', click: addCampsite, class: "button is-primary"},
@@ -160,7 +158,7 @@ function addCampsite() {
         }
     });
     if (!unique){
-        $("#name-error").text("This name is unavailable");
+        $(".name-error").text("This name is unavailable");
         return false;
     }  // Add in a warning / alert that the name is not unique
     campsites.push(newSite);
@@ -198,7 +196,7 @@ function saveSite(){
     campsites = JSON.parse(localStorage.getItem("campsites"));
     campsites.forEach(e =>{
         if (e.name.toLowerCase() === editNameValue.toLowerCase()){
-            $("#name-error").text("This name is unavailable");
+            $(".name-error").text("This name is unavailable");
             unique = false;
         }
         if (e.id === editSiteId) oldSite = e;

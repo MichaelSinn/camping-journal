@@ -11,7 +11,7 @@ const toronto = {lat: 43.64287569139718, lng: -79.38692966368654};
 let map;
 let markers = [];
 let script = document.createElement('script');
-script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&callback=initMap`;
+script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyB3y5pgb9odKMQqs1TpnIAZZvmt1AvjgOs&callback=initMap`;
 script.async = true;
 
 let newSiteDialog, editSiteDialog, saveForm, editForm,
@@ -274,7 +274,7 @@ async function filterSites() {
 async function getWeather(campsite) {
     let lat = campsite.lat;
     let lng = campsite.lng;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=${WEATHER_API_KEY}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lng}&appid=4525e4c4d6900be2e3932d311208c64e&units=metric`;
     await fetch(apiUrl).then(function (response) {
         return response.json();
     }).then(function (data) {

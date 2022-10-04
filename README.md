@@ -14,6 +14,8 @@ As technology continues to advance, travelers of all kinds have become increasin
 - Uses flexbox elements to obtain a fully responsive webpage, compatible with a large range of screen dimensions
 - Contains "alt" phrases with descriptive titles of each image displayed, for screen readers
 
+[Camp JRNL (1).webm](https://user-images.githubusercontent.com/92243834/193717199-93fa5c49-75cc-48a3-b71e-fb8618184682.webm)
+
 Link to [Live Website](https://michaelsinn.github.io/camping-journal/)
 
 ## WireFrame & WorkFlow Chart
